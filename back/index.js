@@ -12,7 +12,7 @@ const route_comic = require("./routes/comic");
 
 app.use(cors());
 app.use(express.json());
-app.use("/", route_comic);
+app.use("/comics", route_comic);
 
 app.listen(PORT, () => {
   console.log("Servidor corriendo en el puerto" + PORT);
