@@ -1,0 +1,69 @@
+paths:
+  /comics:
+    get:
+      summary: Obtiene los Comics
+      tags:
+        - Comics
+      responses:
+        "200":
+          description: Devuelve los Comics
+
+  /comics/create:
+    post:
+      summary: Crea un Comic
+      tags:
+        - Comics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Título del Comic
+                author:
+                  type: string
+                  description: Autor del Comic
+                description:
+                  type: string
+                  description: Descripción del Comic
+                publisher:
+                  type: string
+                  description: Editorial del Comic
+                category:
+                  type: string
+                  description: Categoria del Comic
+                price:
+                  type: number
+                  description: Precio del Comic
+                thumbnail:
+                  type: string
+                  description: Imagen del Comic
+                pdf:
+                  type: string
+                  description: PDF del Comic
+              required:
+                - title
+                - author
+                - description
+                - publisher
+                - category
+                - price
+                - thumbnail
+                - pdf
+            example:
+              title: Batman
+              author: DC
+              description: El Caballero de la noche
+              publisher: DC
+              category: Superheroes
+              price: 2500
+              thumbnail: prueba.jpg
+              pdf: prueba.pdf
+      responses:
+        "200":
+          description: Crea un Comic y lo devuelve
+        "400":
+          description: Devuelve un Error

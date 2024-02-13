@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const mongoUser = require("../config/config");
+import mongoose from "mongoose";
+import config from "../config/config.js";
 
 const connection = async () => {
   try {
     await mongoose.connect(
-      `mongodb+srv://${mongoUser.mongoUser}@cluster0.o0n7p3d.mongodb.net/ecommerce`,
+      `mongodb+srv://${config.mongoUser}@cluster0.o0n7p3d.mongodb.net/ecommerce`,
     );
     console.log("Conectado correctamente a la base de datos");
   } catch (error) {
@@ -13,6 +13,4 @@ const connection = async () => {
   }
 };
 
-module.exports = {
-  connection,
-};
+export default connection

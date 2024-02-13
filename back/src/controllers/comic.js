@@ -1,8 +1,8 @@
-const Comic = require("../models/Comic");
+import { comicModel } from "../models/Comic.js"
 
 const getComics = async (req, res) => {
   try {
-    const comics = await Comic.find();
+    const comics = await comicModel.find();
     return res.status(200).json({
       status: "Success",
       comics,
@@ -21,7 +21,7 @@ const createComic = async (req, res) => {
     const { title, author, description, publisher, category, price, thumbnail, pdf } = req.body;
 
     const comic = { title, author, description, publisher, category, price, thumbnail, pdf };
-    const newComic = await Comic.create(comic);
+    const newComic = await comicModel.create(comic);
 
     return res.status(200).json({
       status: "Success",
@@ -42,7 +42,7 @@ const editComic = async (req, res) => {
     const { title, author, description, publisher, category, price, thumbnail, pdf } = req.body;
     const comicEdit = { title, author, description, publisher, category, price, thumbnail, pdf };
 
-    const newComicEdit = await Comic.findByIdAndUpdate(idComic, comicEdit);
+    const newComicEdit = await comicModel.findByIdAndUpdate(idComic, comicEdit);
     return res.status(200).json({
       status: "Success",
       mensaje: "Comic Editado con Éxito",
@@ -60,7 +60,7 @@ const editComic = async (req, res) => {
 const deleteComic = async (req, res) => {
   try {
     const idComic = req.params.id;
-    const comicDelete = await Comic.findByIdAndDelete(idComic);
+    const comicDelete = await comicModel.findByIdAndDelete(idComic);
 
     return res.status(200).json({
       status: "Success",
@@ -76,9 +76,9 @@ const deleteComic = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   createComic,
   getComics,
   editComic,
   deleteComic,
-};
+}
