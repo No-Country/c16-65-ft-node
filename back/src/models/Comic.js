@@ -1,6 +1,8 @@
-const { Schema, model } = require("mongoose");
+import mongoose from "mongoose";
 
-const ComicSchema = Schema({
+const ComicCollection = "comics"
+
+const ComicSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -35,4 +37,4 @@ const ComicSchema = Schema({
   },
 });
 
-module.exports = model("Comic", ComicSchema, "comics");
+export const comicModel = mongoose.model(ComicCollection, ComicSchema)
