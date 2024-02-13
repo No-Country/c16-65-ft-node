@@ -9,9 +9,9 @@ router.get("/", ComicController.getComics);
 router.post("/create", ComicController.createComic);
 
 // EDITAR COMIC
-router.put("/edit/:id", ComicController.editComic)
+router.put("/edit/:id", ComicController.editComic);
 
 // ELIMINAR COMIC
-router.delete("/delete/:id", ComicController.deleteComic)
+router.delete("/delete/:id", ComicController.deleteComic);
 
 module.exports = router;

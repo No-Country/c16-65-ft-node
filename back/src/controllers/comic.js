@@ -11,16 +11,16 @@ const getComics = async (req, res) => {
     return res.status(400).json({
       status: "Error",
       mensaje: "Error al obtener los comics",
-      error: error
+      error: error,
     });
   }
-}
+};
 
 const createComic = async (req, res) => {
   try {
     const { title, author, description, publisher, category, price, thumbnail, pdf } = req.body;
 
-    const comic = { title, author, description, publisher, category, price, thumbnail, pdf }
+    const comic = { title, author, description, publisher, category, price, thumbnail, pdf };
     const newComic = await Comic.create(comic);
 
     return res.status(200).json({
@@ -31,18 +31,18 @@ const createComic = async (req, res) => {
     return res.status(400).json({
       status: "Error",
       mensaje: "Error al crear un comic",
-      error: error
+      error: error,
     });
   }
 };
 
 const editComic = async (req, res) => {
   try {
-    const idComic = req.params.id
+    const idComic = req.params.id;
     const { title, author, description, publisher, category, price, thumbnail, pdf } = req.body;
-    const comicEdit = { title, author, description, publisher, category, price, thumbnail, pdf }
+    const comicEdit = { title, author, description, publisher, category, price, thumbnail, pdf };
 
-    const newComicEdit = await Comic.findByIdAndUpdate(idComic, comicEdit)
+    const newComicEdit = await Comic.findByIdAndUpdate(idComic, comicEdit);
     return res.status(200).json({
       status: "Success",
       mensaje: "Comic Editado con Éxito",
@@ -52,15 +52,15 @@ const editComic = async (req, res) => {
     return res.status(400).json({
       status: "Error",
       mensaje: "Error al editar un comic",
-      error: error
+      error: error,
     });
   }
-}
+};
 
 const deleteComic = async (req, res) => {
   try {
-    const idComic = req.params.id
-    const comicDelete = await Comic.findByIdAndDelete(idComic)
+    const idComic = req.params.id;
+    const comicDelete = await Comic.findByIdAndDelete(idComic);
 
     return res.status(200).json({
       status: "Success",
@@ -71,10 +71,10 @@ const deleteComic = async (req, res) => {
     return res.status(400).json({
       status: "Error",
       mensaje: "Error al eliminar un comic",
-      error: error
+      error: error,
     });
   }
-}
+};
 
 module.exports = {
   createComic,
