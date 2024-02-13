@@ -16,6 +16,32 @@ const getComics = async (req, res) => {
   }
 };
 
+// Conseguir 1 comic por id
+const getOneComic = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const oneComic = await Comic.findById(id);
+
+    if (!oneComic) {
+      return res.status(404).json({
+        status: "Error",
+        mensaje: "No se han encontrado comics",
+      });
+    }
+
+    return res.status(200).json({
+      status: "Success",
+      oneComic,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      status: "Error",
+      mensaje: "Error al obtener el comic",
+      error: error,
+    });
+  }
+};
+
 const createComic = async (req, res) => {
   try {
     const { title, author, description, publisher, category, price, thumbnail, pdf } = req.body;
@@ -79,6 +105,7 @@ const deleteComic = async (req, res) => {
 module.exports = {
   createComic,
   getComics,
+  getOneComic,
   editComic,
   deleteComic,
 };
