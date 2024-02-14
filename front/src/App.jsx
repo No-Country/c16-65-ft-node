@@ -1,10 +1,13 @@
 import './App.css'
+import CardList from './components/CardList';
+
 
 function App() {
 
   return (
     <>
-      <h1>Comics</h1>
+    <CardList />
+     
     </>
   )
 }
