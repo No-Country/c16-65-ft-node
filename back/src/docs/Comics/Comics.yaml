@@ -1,5 +1,5 @@
 paths:
-  /comics:
+  /api/comics:
     get:
       summary: Obtiene los Comics
       tags:
@@ -26,7 +26,7 @@ paths:
   #       "400":
   #         description: Devuelve un Error
 
-  /comics/create:
+  /api/comics/create:
     post:
       summary: Crea un Comic
       tags:
@@ -86,7 +86,7 @@ paths:
         "400":
           description: Devuelve un Error
 
-  /comics/edit/{id}:
+  /api/comics/edit/{id}:
     put:
       summary: Edita un Comic
       tags:
@@ -153,7 +153,7 @@ paths:
         "400":
           description: Devuelve un Error
 
-  /comics/delete/{id}:
+  /api/comics/delete/{id}:
     delete:
       summary: Borra un Comic
       tags:
