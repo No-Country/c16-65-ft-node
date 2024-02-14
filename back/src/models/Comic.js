@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2"
 
 const ComicCollection = "comics"
 
@@ -36,5 +37,7 @@ const ComicSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+ComicSchema.plugin(mongoosePaginate)
 
 export const comicModel = mongoose.model(ComicCollection, ComicSchema)

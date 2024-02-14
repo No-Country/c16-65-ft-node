@@ -3,7 +3,8 @@ const router = Router();
 import ComicController from "../controllers/comic.js"
 
 // DEVUELVE COMICS
-router.get("/", ComicController.getComics);
+// router.get("/", ComicController.getComics);
+router.get("/", ComicController.getComicsPaginated);
 
 // DEVUELVE 1 COMIC
 router.get("/:id", ComicController.getOneComic);
