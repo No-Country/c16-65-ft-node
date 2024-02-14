@@ -20,7 +20,7 @@ const getComics = async (req, res) => {
 const getOneComic = async (req, res) => {
   try {
     const id = req.params.id;
-    const oneComic = await Comic.findById(id);
+    const oneComic = await comicModel.findById(id);
 
     if (!oneComic) {
       return res.status(404).json({
@@ -68,6 +68,14 @@ const editComic = async (req, res) => {
     const { title, author, description, publisher, category, price, thumbnail, pdf } = req.body;
     const comicEdit = { title, author, description, publisher, category, price, thumbnail, pdf };
 
+    const comicEditTest = await comicModel.findById(idComic);
+    if (!comicEditTest) {
+      return res.status(404).json({
+        status: "Error",
+        mensaje: "No se ha encontrado el Comic",
+      });
+    }
+
     const newComicEdit = await comicModel.findByIdAndUpdate(idComic, comicEdit);
     return res.status(200).json({
       status: "Success",
@@ -86,6 +94,15 @@ const editComic = async (req, res) => {
 const deleteComic = async (req, res) => {
   try {
     const idComic = req.params.id;
+
+    const comicDeleteTest = await comicModel.findById(idComic);
+    if (!comicDeleteTest) {
+      return res.status(404).json({
+        status: "Error",
+        mensaje: "No se ha encontrado el Comic",
+      });
+    }
+
     const comicDelete = await comicModel.findByIdAndDelete(idComic);
 
     return res.status(200).json({
@@ -102,10 +119,42 @@ const deleteComic = async (req, res) => {
   }
 };
 
+const getComicsPaginated = async (req, res) => {
+  try {
+    const {
+      limit,
+      page,
+    } = req.query
+
+    const options = {
+      limit: limit ? parseInt(limit, 10) : 5,
+      page
+    }
+
+    // const search = {
+    //   category: { $regex: category, $options: "i" },
+    //   title: { $regex: title, $options: "i" }
+    // }
+
+    const comics = await comicModel.paginate({}, options);
+    return res.status(200).json({
+      status: "Success",
+      comics,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      status: "Error",
+      mensaje: "Error al obtener los comics",
+      error: error,
+    });
+  }
+};
+
 export default {
   createComic,
   getComics,
   getOneComic,
   editComic,
   deleteComic,
+  getComicsPaginated,
 }

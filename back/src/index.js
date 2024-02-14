@@ -29,7 +29,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }))
-app.use("/comics", route_comic);
+
+// RUTAS
+app.use("/api/comics", route_comic);
 
 app.listen(PORT, () => {
   console.log("Servidor corriendo en el puerto" + PORT);
