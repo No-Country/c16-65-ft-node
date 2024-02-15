@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import Card from "./card.jsx";
+import {useEffect,useState} from 'react'
+import Card from "../components/card";
 
 function CardList() {
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -10,8 +11,11 @@ function CardList() {
       .then((data) => setData(data.comics.docs));
   }, []);
 
+
   return (
-    <div className="card-list ">
+    <div className="card-list1  grid grid-cols-2 
+     gap-4"> 
+      {/* div que contiene las cards  */}
      
       {data.map((item) => (
         <Card
