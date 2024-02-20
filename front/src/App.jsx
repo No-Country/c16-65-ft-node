@@ -1,23 +1,21 @@
-import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from "./components/NavBar.jsx";
-import ComicsPage from './pages/Categorias.jsx'
-import CarritoPage from './pages/CarritoPage.jsx';
+import React from "react";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import { ContextProvider } from "./context/Context";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <div >
-
-        <ComicsPage/>
-
-
-
-
-      </div>
-    </div>
+    <ContextProvider>
+      <Router>
+        <NavBar />
+        <AppRoutes />
+      </Router>
+    </ContextProvider>
   );
 }
 
 export default App;
+
+
+

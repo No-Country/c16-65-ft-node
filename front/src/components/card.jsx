@@ -1,26 +1,43 @@
+import React, { useContext } from "react";
+import { FaCartPlus } from "react-icons/fa";
+import { RiSubtractFill } from "react-icons/ri";
+import { Context } from "../context/Context";
+import { Link } from "react-router-dom";
 
+function Card({ title, price }) {
+  const { addToCart, removeItem } = useContext(Context);
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-
-function Card({ title, image, price, addToCart }) {
   const handleAddToCart = () => {
-    // Lógica para agregar al carrito, por ejemplo, llamar a una función prop "addToCart"
-    addToCart({ title, price });
+    addToCart({ id: title, price });
+  };
+
+  const handleRemoveFromCart = () => {
+    removeItem(title); // Utiliza el título (u otra propiedad única) para identificar el producto
   };
 
   return (
-    <div className="card bg-slate-500  w-40  flex  flex-col py-4 items-center  rounded-md text-center text-white grid-cols-2 gap-4">
-
-
-      <img className="rounded-md w-20 " src='https://www.cnet.com/a/img/resize/95069a632034ea8e75d5518755387b6f28be75ec/hub/2010/07/09/60de24d9-fdc3-11e2-8c7c-d4ae52e62bcc/magneto03.jpg?auto=webp&width=1200' alt={title} />
-      <h2 className="text-sm">{title}</h2>
-      <p>${price}</p>
-      <button className="text-white" onClick={handleAddToCart}>
-        <FontAwesomeIcon icon={faShoppingCart} /> Agregar al carrito
-      </button>
+    <div className="max-w-xs mx-auto mb-4 bg-slate-500 text-white rounded-md overflow-hidden">
+      <Link to="/detail">
+        <img className="w-full" src="https://storage.googleapis.com/hipcomic/p/d763a667649efd0794c739cf84d05fb5-800.jpg" alt={title} />
+      </Link>
+      <div className="p-4 text-center">
+        <h2 className="text-sm">{title}</h2>
+        <p className="font-bold">${price}</p>
+        <div className="flex justify-center mt-2 space-x-2">
+          <button
+            className="text-white border border-solid border-black p-2 rounded"
+            onClick={handleRemoveFromCart}
+          >
+            <RiSubtractFill />
+          </button>
+          <button className="text-white p-2 rounded" onClick={handleAddToCart}>
+            <FaCartPlus />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default Card;
+
