@@ -1,9 +1,14 @@
 import connection from "./database/connection.js";
-import express from "express"
-import cors from "cors"
-import swaggerJSDoc from 'swagger-jsdoc'
-import swaggerUiExpress from 'swagger-ui-express'
+import express from "express";
+import cors from "cors";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUiExpress from "swagger-ui-express";
 import { __dirname } from "./utils.js";
+import envconfig from "./config/config.js";
+
+//Auth0 require
+import { auth } from "express-openid-connect";
+//const { auth } = require("express-openid-connect");
 //Conexión a la base de datos
 connection();
 
@@ -12,23 +17,35 @@ const PORT = process.env.PORT || 3000;
 
 const swaggerOptions = {
   definition: {
-    openapi: '3.0.1',
+    openapi: "3.0.1",
     info: {
       title: "Documentación de Comics",
-      description: "API de comics"
-    }
+      description: "API de comics",
+    },
   },
-  apis: [`${__dirname}/docs/**/*.yaml`]
-}
-const specs = swaggerJSDoc(swaggerOptions)
-app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+  apis: [`${__dirname}/docs/**/*.yaml`],
+};
+const specs = swaggerJSDoc(swaggerOptions);
+app.use("/apidocs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
-import route_comic from "./routes/comic.js"
+//Auth0 config
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: envconfig.secret,
+  baseURL: envconfig.baseURL,
+  clientID: envconfig.clientID,
+  issuerBaseURL: envconfig.issuerBaseURL,
+};
+
+import route_comic from "./routes/comic.js";
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: true }))
+app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: true }));
+//Auth0
+app.use(auth(config));
 
 // RUTAS
 app.use("/api/comics", route_comic);
