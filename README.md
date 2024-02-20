@@ -145,17 +145,17 @@ npm start
 <tr>
 <td align='center'>
       <div >
-        <a href="https://github.com/crishof" target="_blank" rel="author">
-          <img width="110" src="https://avatars.githubusercontent.com/u/113149470?v=4"/>
+        <a href="https://github.com/etchepared" target="_blank" rel="author">
+          <img width="110" src="https://avatars.githubusercontent.com/u/88214684?v=4"/>
         </a>
-        <a href="https://github.com/crishof" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Cristian Hoffmann</br><small>Back-End</small></h4>
+        <a href="https://github.com/etchepared" target="_blank" rel="author">
+          <h4 style="margin-top: 1rem;">David Ezequiel Etchepare</br><small>Product Manager</small></h4>
         </a>
         <div style='display: flex; flex-direction: column'>
-        <a href="https://github.com/crishof" target="_blank">
+        <a href="https://github.com/etchepared" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/cristianhof" target="_blank">
+        <a href="https://www.linkedin.com/in/etcheparede/" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
@@ -167,54 +167,13 @@ npm start
           <img width="110" src="https://avatars.githubusercontent.com/u/65041258?v=4"/>
         </a>
         <a href="https://github.com/faviofz" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Favio Fernandez</br><small>Back-End</small></h4>
+          <h4 style="margin-top: 1rem;">Daniel Perea</br><small>Front-End</small></h4>
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/faviofz" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/faviofernandez/" target="_blank">
-          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
-        </a>
-        </div>
-      </div>
-    </td>
-  
-</tr>
-</table>
-<table align='center'>
-  <tr>
-<td align='center'>
-      <div >
-        <a href="https://github.com/alvarodvc" target="_blank" rel="author">
-          <img width="110" src="https://ca.slack-edge.com/T02KS88FB0E-U05UEK6G8P6-a2808b4d92a3-512"/>
-        </a>
-        <a href="https://github.com/alvarodvc" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Alvaro Deveze</br><small>QA</small></h4>
-        </a>
-        <div style='display: flex; flex-direction: column; width: 100%'>
-        <a href="https://github.com/alvarodvc" target="_blank">
-          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
-        </a>
-        <a href="https://www.linkedin.com/in/alvaro-deveze/" target="_blank">
-          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
-        </a>
-        </div>
-      </div>
-    </td>
-    <td align='center'>
-      <div >
-        <a href="https://github.com/Melina1599" target="_blank" rel="author">
-          <img width="110" src="https://avatars.githubusercontent.com/u/72995774?v=4"/>
-        </a>
-        <a href="https://github.com/Melina1599" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Melina Valdez</br><small>QA</small></h4>
-        </a>
-        <div style='display: flex; flex-direction: column'>
-        <a href="https://github.com/Melina1599" target="_blank">
-          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
-        </a>
-        <a href="https://www.linkedin.com/in/melina-delosangeles-valdez/" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
