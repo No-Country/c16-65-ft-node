@@ -16,6 +16,6 @@ router.post("/create", ComicController.createComic);
 router.put("/edit/:id", ComicController.editComic);
 
 // ELIMINAR COMIC
-router.delete("/delete/:id", ComicController.deleteComic);
+router.delete("/delete/:id", ComicController.availableComic);
 
 export default router;

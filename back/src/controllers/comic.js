@@ -1,20 +1,20 @@
 import { comicModel } from "../models/Comic.js";
 
-const getAllComics = async (req, res) => {
-  try {
-    const comics = await comicModel.find();
-    return res.status(200).json({
-      status: "Success",
-      comics,
-    });
-  } catch (error) {
-    return res.status(400).json({
-      status: "Error",
-      mensaje: "Error al obtener los comics",
-      error: error,
-    });
-  }
-};
+// const getAllComics = async (req, res) => {
+//   try {
+//     const comics = await comicModel.find();
+//     return res.status(200).json({
+//       status: "Success",
+//       comics,
+//     });
+//   } catch (error) {
+//     return res.status(400).json({
+//       status: "Error",
+//       mensaje: "Error al obtener los comics",
+//       error: error,
+//     });
+//   }
+// };
 
 const getComics = async (req, res) => {
   try {
@@ -125,35 +125,37 @@ const editComic = async (req, res) => {
 // const deleteComic = async (req, res) => {
 //   try {
 //     const idComic = req.params.id;
+//     const { isAvailable } = req.body;
 
-//     const comicDeleteTest = await comicModel.findById(idComic);
-//     if (!comicDeleteTest) {
+//     const comicEditTest = await comicModel.findById(idComic);
+//     if (!comicEditTest) {
 //       return res.status(404).json({
 //         status: "Error",
 //         mensaje: "No se ha encontrado el Comic",
 //       });
 //     }
 
-//     const comicDelete = await comicModel.findByIdAndDelete(idComic);
-
+//     const newComicEdit = await comicModel.updateOne(
+//       { _id: idComic },
+//       { $set: { isAvailable: isAvailable } },
+//     );
 //     return res.status(200).json({
 //       status: "Success",
-//       mensaje: "Comic Eliminado con Éxito",
-//       comicDelete,
+//       mensaje: "Campo isAvailable editado con Éxito",
+//       newComicEdit,
 //     });
 //   } catch (error) {
 //     return res.status(400).json({
 //       status: "Error",
-//       mensaje: "Error al eliminar un comic",
+//       mensaje: "Error al editar un comic",
 //       error: error,
 //     });
 //   }
 // };
 
-const deleteComic = async (req, res) => {
+const availableComic = async (req, res) => {
   try {
     const idComic = req.params.id;
-    const { isAvailable } = req.body;
 
     const comicEditTest = await comicModel.findById(idComic);
     if (!comicEditTest) {
@@ -163,9 +165,11 @@ const deleteComic = async (req, res) => {
       });
     }
 
+    const newIsAvailable = !comicEditTest.isAvailable;
+
     const newComicEdit = await comicModel.updateOne(
       { _id: idComic },
-      { $set: { isAvailable: isAvailable } },
+      { $set: { isAvailable: newIsAvailable } },
     );
     return res.status(200).json({
       status: "Success",
@@ -199,10 +203,8 @@ const getComicsPaginated = async (req, res) => {
       query.category = { $regex: category, $options: "i" };
     }
     if (isAvailable) {
-      // Si isAvailable es proporcionado en la consulta, convertirlo a booleano
-      // const isAvailableBool = isAvailable.toLowerCase() === "true";
-      // query.isAvailable = isAvailableBool;
-      query.isAvailable = { $regex: isAvailable, $options: "i" };
+      const isAvailableBool = isAvailable.toLowerCase() === "true";
+      query.isAvailable = isAvailableBool;
     }
 
     const comics = await comicModel.paginate(query, options);
@@ -225,6 +227,6 @@ export default {
   getComics,
   getOneComic,
   editComic,
-  deleteComic,
   getComicsPaginated,
+  availableComic,
 };
