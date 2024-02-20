@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import mongoosePaginate from "mongoose-paginate-v2"
+import mongoosePaginate from "mongoose-paginate-v2";
 
-const ComicCollection = "comics"
+const ComicCollection = "comics";
 
 const ComicSchema = new mongoose.Schema({
   title: {
@@ -36,8 +36,12 @@ const ComicSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isAvailable: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-ComicSchema.plugin(mongoosePaginate)
+ComicSchema.plugin(mongoosePaginate);
 
-export const comicModel = mongoose.model(ComicCollection, ComicSchema)
+export const comicModel = mongoose.model(ComicCollection, ComicSchema);
