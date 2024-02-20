@@ -1,24 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Importa Link si estás usando react-router-dom
+
+import React, { useContext } from "react";
+import { FaSearch, FaHome, FaCartPlus } from "react-icons/fa";
+import { Context } from "../context/Context";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const { getTotalQuantity } = useContext(Context);
+
+  const quantity = getTotalQuantity();
+
   return (
-    <nav className="navbar ">
+    <nav className="navbar">
       <div className="container flex justify-between">
         {/* Logo */}
         <h1 className="navbar-logo text-2xl">ComicShop</h1>
 
         {/* Enlaces de navegación */}
-        <ul className="navbar-links flex   ">
-          <li className="px-5 "></li>
+        <ul className="navbar-links flex">
+          <li className="px-5"></li>
           <li className="px-5">
-            <a>Cómics</a>
+            <Link to="/home">
+              <FaHome />
+            </Link>
           </li>
           <li className="px-5">
-            <a href="https://platzi.com/">Ofertas</a>
+            <Link to="/search">
+              <FaSearch />
+            </Link>
           </li>
           <li className="px-5">
-            <Link to="/2"> Carrito </Link>
+            <Link to="/carrito" className="flex py-1">
+              <FaCartPlus /> <samp>{quantity}</samp>{" "}
+            </Link>
           </li>
         </ul>
       </div>

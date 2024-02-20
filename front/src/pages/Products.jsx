@@ -1,7 +1,7 @@
 import {useEffect,useState} from 'react'
 import Card from "../components/card";
 
-function CardList() {
+function Products() {
 
   const [data, setData] = useState([]);
 
@@ -29,4 +29,4 @@ function CardList() {
   );
 }
 
-export default CardList;
+export default Products;

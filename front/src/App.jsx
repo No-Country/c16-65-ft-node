@@ -1,26 +1,21 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/NavBar.jsx";
-import ComicsPage from "./pages/Categorias.jsx";
-import CarritoPage from "./pages/CarritoPage.jsx";
-import Detail from "./pages/Detail.jsx";
-import Search from './pages/Search.jsx'
-import Notfound from './pages/Notfound.jsx'
+import React from "react";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import { ContextProvider } from "./context/Context";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<ComicsPage/>}/>
-        <Route path="/2" element={<CarritoPage/>}/>
-        <Route path="/detail" element={<Detail/>}/>
-        <Route path="/search" element={<Search/>}/>
-        <Route path="*" element={<Notfound/>}/>
-
-      </Routes>
-    </div>
+    <ContextProvider>
+      <Router>
+        <NavBar />
+        <AppRoutes />
+      </Router>
+    </ContextProvider>
   );
 }
 
 export default App;
+
+
+
