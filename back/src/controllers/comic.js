@@ -1,6 +1,6 @@
-import { comicModel } from "../models/Comic.js"
+import { comicModel } from "../models/Comic.js";
 
-const getComics = async (req, res) => {
+const getAllComics = async (req, res) => {
   try {
     const comics = await comicModel.find();
     return res.status(200).json({
@@ -11,6 +11,37 @@ const getComics = async (req, res) => {
     return res.status(400).json({
       status: "Error",
       mensaje: "Error al obtener los comics",
+      error: error,
+    });
+  }
+};
+
+const getComics = async (req, res) => {
+  try {
+    let comics;
+
+    // Verificar si se proporciona el parámetro isAvailable en la consulta
+    const { isAvailable } = req.query;
+
+    if (isAvailable !== undefined) {
+      // Si isAvailable es proporcionado en la consulta, convertirlo a booleano
+      const isAvailableBool = isAvailable.toLowerCase() === "true";
+
+      // Consultar los cómics según el valor de isAvailable
+      comics = await comicModel.find({ isAvailable: isAvailableBool });
+    } else {
+      // Si no se proporciona el parámetro isAvailable, obtener todos los cómics
+      comics = await comicModel.find();
+    }
+
+    return res.status(200).json({
+      status: "Success",
+      comics,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      status: "Error",
+      mensaje: "Error al obtener los cómics",
       error: error,
     });
   }
@@ -91,29 +122,60 @@ const editComic = async (req, res) => {
   }
 };
 
+// const deleteComic = async (req, res) => {
+//   try {
+//     const idComic = req.params.id;
+
+//     const comicDeleteTest = await comicModel.findById(idComic);
+//     if (!comicDeleteTest) {
+//       return res.status(404).json({
+//         status: "Error",
+//         mensaje: "No se ha encontrado el Comic",
+//       });
+//     }
+
+//     const comicDelete = await comicModel.findByIdAndDelete(idComic);
+
+//     return res.status(200).json({
+//       status: "Success",
+//       mensaje: "Comic Eliminado con Éxito",
+//       comicDelete,
+//     });
+//   } catch (error) {
+//     return res.status(400).json({
+//       status: "Error",
+//       mensaje: "Error al eliminar un comic",
+//       error: error,
+//     });
+//   }
+// };
+
 const deleteComic = async (req, res) => {
   try {
     const idComic = req.params.id;
+    const { isAvailable } = req.body;
 
-    const comicDeleteTest = await comicModel.findById(idComic);
-    if (!comicDeleteTest) {
+    const comicEditTest = await comicModel.findById(idComic);
+    if (!comicEditTest) {
       return res.status(404).json({
         status: "Error",
         mensaje: "No se ha encontrado el Comic",
       });
     }
 
-    const comicDelete = await comicModel.findByIdAndDelete(idComic);
-
+    const newComicEdit = await comicModel.updateOne(
+      { _id: idComic },
+      { $set: { isAvailable: isAvailable } },
+    );
     return res.status(200).json({
       status: "Success",
-      mensaje: "Comic Eliminado con Éxito",
-      comicDelete,
+      mensaje: "Campo isAvailable editado con Éxito",
+      newComicEdit,
     });
   } catch (error) {
     return res.status(400).json({
       status: "Error",
-      mensaje: "Error al eliminar un comic",
+      mensaje: "Error al editar un comic",
       error: error,
     });
   }
@@ -121,11 +183,11 @@ const deleteComic = async (req, res) => {
 
 const getComicsPaginated = async (req, res) => {
   try {
-    const { limit, page, title, category } = req.query;
+    const { limit, page, title, category, isAvailable } = req.query;
 
     const options = {
       limit: limit ? parseInt(limit, 10) : 5,
-      page: page ? parseInt(page, 10) : 1
+      page: page ? parseInt(page, 10) : 1,
     };
 
     let query = {};
@@ -135,6 +197,12 @@ const getComicsPaginated = async (req, res) => {
     }
     if (category) {
       query.category = { $regex: category, $options: "i" };
+    }
+    if (isAvailable) {
+      // Si isAvailable es proporcionado en la consulta, convertirlo a booleano
+      // const isAvailableBool = isAvailable.toLowerCase() === "true";
+      // query.isAvailable = isAvailableBool;
+      query.isAvailable = { $regex: isAvailable, $options: "i" };
     }
 
     const comics = await comicModel.paginate(query, options);
@@ -152,7 +220,6 @@ const getComicsPaginated = async (req, res) => {
   }
 };
 
-
 export default {
   createComic,
   getComics,
@@ -160,4 +227,4 @@ export default {
   editComic,
   deleteComic,
   getComicsPaginated,
-}
+};
