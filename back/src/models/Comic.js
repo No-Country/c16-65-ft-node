@@ -80,7 +80,7 @@ const ComicSchema = new mongoose.Schema({
 
         // Validar si termina con .jpg o .png
         if (!/\.(pdf)$/.test(value)) {
-          throw new Error("La URL debe terminar con .jpg o .png");
+          throw new Error("La URL debe terminar con .pdf");
         }
 
         return true;
