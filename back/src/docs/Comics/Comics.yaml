@@ -8,6 +8,7 @@ paths:
         "200":
           description: Devuelve los Comics
 
+<<<<<<< HEAD
   /api/comics/{id}:
     get:
       summary: Obtiene un Comic por id
@@ -25,6 +26,25 @@ paths:
           description: Obtiene un Comic por id y lo devuelve
         "400":
           description: Devuelve un Error
+=======
+  # /comics/{id}:
+  #   get:
+  #     summary: Obtiene un Comic por id
+  #     tags:
+  #       - Comics
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         required: true
+  #         description: id del comic
+  #         schema:
+  #           type: string
+  #     responses:
+  #       "200":
+  #         description: Obtiene un Comic por id y lo devuelve
+  #       "400":
+  #         description: Devuelve un Error
+>>>>>>> ce79a1a73d32ce6287f8a206d6fba434d55870f4
 
   /api/comics/create:
     post:

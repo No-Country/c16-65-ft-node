@@ -16,7 +16,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.3",
     "express": "^4.18.2",
+<<<<<<< HEAD
     "express-openid-connect": "^2.17.1",
+=======
+>>>>>>> ce79a1a73d32ce6287f8a206d6fba434d55870f4
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.2",
     "mongoose-paginate-v2": "^1.8.0",

@@ -121,6 +121,7 @@ const deleteComic = async (req, res) => {
 
 const getComicsPaginated = async (req, res) => {
   try {
+<<<<<<< HEAD
     const { limit, page, title, category } = req.query;
 
     const options = {
@@ -139,6 +140,24 @@ const getComicsPaginated = async (req, res) => {
 
     const comics = await comicModel.paginate(query, options);
 
+=======
+    const {
+      limit,
+      page,
+    } = req.query
+
+    const options = {
+      limit: limit ? parseInt(limit, 10) : 5,
+      page
+    }
+
+    // const search = {
+    //   category: { $regex: category, $options: "i" },
+    //   title: { $regex: title, $options: "i" }
+    // }
+
+    const comics = await comicModel.paginate({}, options);
+>>>>>>> ce79a1a73d32ce6287f8a206d6fba434d55870f4
     return res.status(200).json({
       status: "Success",
       comics,
@@ -152,7 +171,10 @@ const getComicsPaginated = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce79a1a73d32ce6287f8a206d6fba434d55870f4
 export default {
   createComic,
   getComics,
