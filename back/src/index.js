@@ -47,10 +47,6 @@ app.use(express.urlencoded({ extended: true }));
 //Auth0
 app.use(auth(config));
 
-app.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
-
 // RUTAS
 app.use("/api/comics", route_comic);
 
