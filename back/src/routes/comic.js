@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-import ComicController from "../controllers/comic.js"
+import ComicController from "../controllers/comic.js";
 
 // DEVUELVE COMICS
 // router.get("/", ComicController.getComics);
@@ -16,6 +16,6 @@ router.post("/create", ComicController.createComic);
 router.put("/edit/:id", ComicController.editComic);
 
 // ELIMINAR COMIC
-router.delete("/delete/:id", ComicController.deleteComic);
+router.delete("/delete/:id", ComicController.availableComic);
 
-export default router
+export default router;

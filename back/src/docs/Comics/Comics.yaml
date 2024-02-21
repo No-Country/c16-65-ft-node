@@ -129,6 +129,9 @@ paths:
                 pdf:
                   type: string
                   description: PDF del Comic
+                isAvailable:
+                  type: boolean
+                  description: Disponibilidad del Comic
               required:
                 - title
                 - author
@@ -147,6 +150,7 @@ paths:
               price: 2500
               thumbnail: prueba.jpg
               pdf: prueba.pdf
+              isAvailable: true
       responses:
         "200":
           description: Edita un Comic y lo devuelve
