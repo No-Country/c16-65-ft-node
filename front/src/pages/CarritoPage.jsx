@@ -1,21 +1,48 @@
+import React, { useContext } from "react";
+import { Context } from "../context/Context";
 
-import React from 'react';
+const CarritoPage = () => {
+  const { cart } = useContext(Context);
 
-const CarritoPage = ({ carrito }) => {
+  const getTotalGeneral = () => {
+    return cart.reduce((total, item) => total + item.quantity * item.price, 0);
+  };
+
   return (
-    <div>
-      <h2>Carrito de Compras</h2>
-      {carrito.length === 0 ? (
-        <p>El carrito está vacío.</p>
+    <div id="tarjetita">
+      <h1 >Carrito</h1>
+      {cart.length > 0 ? (
+        <div>
+          <h2 >Detalle del Carrito</h2>
+          <ul >
+            {cart.map((item) => (
+              <li key={item.id} >
+                <div >
+                  <img  src={item.image} alt={item.title} />
+                  <p >{item.title}</p>
+                  <p>Cantidad: {item.quantity}</p>
+                  <p>Precio: ${item.price}</p>
+                  <p>Total: ${item.quantity * item.price}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div >
+            <p >Total General: ${getTotalGeneral()}</p>
+          </div>
+        </div>
       ) : (
-        <ul>
-          {carrito.map((comic, index) => (
-            <li key={index}>{comic.title} - ${comic.price}</li>
-          ))}
-        </ul>
+        <p >El carrito está vacío</p>
       )}
     </div>
   );
 };
 
 export default CarritoPage;
+
+
+
+
+
+ 

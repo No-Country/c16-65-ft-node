@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from "../components/card"
 import { Link, useParams } from 'react-router-dom'
 
-function CardList() {
+function Products() {
 
   const [data, setData] = useState([])
   const { comicId } = useParams()
@@ -32,4 +32,4 @@ function CardList() {
   );
 }
 
-export default CardList;
+export default Products;
