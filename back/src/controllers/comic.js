@@ -1,4 +1,4 @@
-import { comicModel } from "../models/Comic.js"
+import { comicModel } from "../models/Comic.js";
 
 const getComics = async (req, res) => {
   try {
@@ -121,12 +121,11 @@ const deleteComic = async (req, res) => {
 
 const getComicsPaginated = async (req, res) => {
   try {
-<<<<<<< HEAD
     const { limit, page, title, category } = req.query;
 
     const options = {
       limit: limit ? parseInt(limit, 10) : 5,
-      page: page ? parseInt(page, 10) : 1
+      page: page ? parseInt(page, 10) : 1,
     };
 
     let query = {};
@@ -140,24 +139,6 @@ const getComicsPaginated = async (req, res) => {
 
     const comics = await comicModel.paginate(query, options);
 
-=======
-    const {
-      limit,
-      page,
-    } = req.query
-
-    const options = {
-      limit: limit ? parseInt(limit, 10) : 5,
-      page
-    }
-
-    // const search = {
-    //   category: { $regex: category, $options: "i" },
-    //   title: { $regex: title, $options: "i" }
-    // }
-
-    const comics = await comicModel.paginate({}, options);
->>>>>>> ce79a1a73d32ce6287f8a206d6fba434d55870f4
     return res.status(200).json({
       status: "Success",
       comics,
@@ -171,10 +152,6 @@ const getComicsPaginated = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ce79a1a73d32ce6287f8a206d6fba434d55870f4
 export default {
   createComic,
   getComics,
@@ -182,4 +159,4 @@ export default {
   editComic,
   deleteComic,
   getComicsPaginated,
-}
+};
