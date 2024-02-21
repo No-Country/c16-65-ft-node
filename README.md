@@ -75,7 +75,8 @@ MONGO_URL=
 Correr el proyecto
 
 ```sh
-npm start
+npm start (Para el Back)
+npm run dev (Para el Front)
 ```
 
 <!-- TEAMS -->
