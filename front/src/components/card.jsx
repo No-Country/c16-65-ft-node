@@ -30,6 +30,7 @@ function Card({ title, price }) {
           >
             <RiSubtractFill />
           </button>
+          
           <button className="text-white p-2 rounded" onClick={handleAddToCart}>
             <FaCartPlus />
           </button>

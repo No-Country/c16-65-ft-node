@@ -1,7 +1,11 @@
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
+import Couldinary from "../util/Couldinary";
 import { createNewComic } from "../api/post.api";
 
 function FormCreate() {
+  const [thumbnailUrl, setThumbnailUrl] = useState("");
+
   return (
     <div>
       <Formik
@@ -15,16 +19,12 @@ function FormCreate() {
           thumbnail: "",
           pdf: "",
         }}
-
-    
-
-
         onSubmit={async (values, { resetForm }) => {
           try {
+            values.thumbnail = thumbnailUrl;
             await createNewComic(values);
-            resetForm(); 
-            
-            // Resetear el formulario después de enviarlo con éxito
+            resetForm();
+            setThumbnailUrl("");
           } catch (error) {
             console.error(error);
           }
@@ -36,7 +36,7 @@ function FormCreate() {
             onSubmit={handleSubmit}
             className="max-w-md mx-auto my-8 p-8 bg-white shadow-md rounded"
           >
-            <label className="block mb-2 text-sm text-gray-600" htmlFor="title">
+            <label htmlFor="title" className="block mb-2 text-sm text-gray-600">
               Title:
             </label>
             <Field
@@ -45,27 +45,31 @@ function FormCreate() {
               name="title"
               placeholder="Write Title"
               onChange={handleChange}
+              maxLength="30"
+              required
             />
 
             <label
-              className="block mb-2 text-sm text-gray-600"
               htmlFor="author"
+              className="block mb-2 text-sm text-gray-600"
             >
               Author:
             </label>
-
             <Field
               as="input"
               className="w-full px-4 py-2 mb-4 border rounded-md"
               name="author"
               placeholder="Write Author"
               onChange={handleChange}
-              
+              pattern="[A-Za-z ]+"
+              title="Please enter only letters"
+              maxLength="50"
+              required
             />
 
             <label
-              className="block mb-2 text-sm text-gray-600"
               htmlFor="description"
+              className="block mb-2 text-sm text-gray-600"
             >
               Description:
             </label>
@@ -75,11 +79,14 @@ function FormCreate() {
               name="description"
               placeholder="Write Description"
               rows="3"
+              maxLength="100"
+              required
+              
             />
 
             <label
-              className="block mb-2 text-sm text-gray-600"
               htmlFor="publisher"
+              className="block mb-2 text-sm text-gray-600"
             >
               Publisher:
             </label>
@@ -89,11 +96,14 @@ function FormCreate() {
               name="publisher"
               placeholder="Write Publisher"
               onChange={handleChange}
+              title="Please enter only letters"
+              maxLength="20"
+              required
             />
 
             <label
-              className="block mb-2 text-sm text-gray-600"
               htmlFor="category"
+              className="block mb-2 text-sm text-gray-600"
             >
               Category:
             </label>
@@ -104,6 +114,7 @@ function FormCreate() {
               name="category"
               placeholder="Categoria"
               onChange={handleChange}
+              required
             >
               <option value="" disabled>
                 Selecciona una categoría
@@ -114,35 +125,33 @@ function FormCreate() {
               <option value="Acción">Acción</option>
             </Field>
 
-            <label className="block mb-2 text-sm text-gray-600" htmlFor="price">
+            <label htmlFor="price" className="block mb-2 text-sm text-gray-600">
               Price:
             </label>
             <Field
               as="input"
               className="w-full px-4 py-2 mb-4 border rounded-md"
               name="price"
-              min="0" 
+              min="0"
               type="number"
               placeholder="Write Price"
               onChange={handleChange}
+              title="Please enter a non-negative number"
+              required
             />
 
             <label
-              className="block mb-2 text-sm text-gray-600"
               htmlFor="thumbnail"
+              className="block mb-2 text-sm text-gray-600"
             >
               Thumbnail:
             </label>
-            <Field
-              as="input"
-              className="w-full px-4 py-2 mb-4 border rounded-md"
-              type="text"
-              name="thumbnail"
-              placeholder="write URL img"
-              onChange={handleChange}
+            <Couldinary
+              onImageUpload={(imageUrl) => setThumbnailUrl(imageUrl)}
+              
             />
 
-            <label className="block mb-2 text-sm text-gray-600" htmlFor="pdf">
+            <label htmlFor="pdf" className="block mb-2 text-sm text-gray-600">
               Pdf:
             </label>
             <Field
@@ -151,6 +160,7 @@ function FormCreate() {
               name="pdf"
               placeholder="URL pdf"
               onChange={handleChange}
+              required
             />
 
             <button
@@ -166,5 +176,4 @@ function FormCreate() {
   );
 }
 
-//? Formik
 export default FormCreate;
