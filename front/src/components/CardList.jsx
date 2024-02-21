@@ -1,7 +1,5 @@
 import {useEffect,useState} from 'react'
-import Card from "../components/card"
-import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import Card from "../components/card";
 
 function CardList() {
 
@@ -19,7 +17,7 @@ function CardList() {
       {/* div que contiene las cards  */}
      
       {data.map((item) => (
-        <Card 
+        <Card
           key={item._id}
           title={item.title}
           // image={item.image}

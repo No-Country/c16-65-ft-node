@@ -8,7 +8,8 @@ function ComicDetail() {
     useEffect(() => {
      fetch('https://no-country-cwv9.onrender.com/api/comics/65cbc6551f1455f2ea324bd1')
      .then((response) => response.json())
-     .then((data)=> {console.log(data)})
+     .then((data)=> {
+        setComic(data.oneComic)})
        .catch((error) => {
             console.error('Error fetching product details:', error)
           }
@@ -16,25 +17,32 @@ function ComicDetail() {
         
       }, [comicId])
 
-    return (
-        <div className='card-detail-container flex'>
-          <div className="thumbnail w-1/2 p-4">
-            <img src="https://www.isubscribe.com.au/images/covers/au/5254/41506/xlarge/TheUltimateGuidetoComicBooks282023142352.jpg" alt=""/>
-          </div>
-          <div className="details w-1/2 p-4">
-            <h2>Title</h2>
-            <p>⭐️⭐️⭐️</p>
-            <p>Author</p>
-            <p>Publisher</p>
-            <div className="price">
-              <p>Price</p>
-              <p>Special price</p>
+
+      if (!comic) {
+        return <p>Loading...</p>;
+      }
+
+      return (
+        <>
+          <button className="bg-gray-700 text-white px-4 py-2 mt-4 hover:bg-gray-900 transition duration-300">BACK</button>
+          <div className="card-detail-container flex flex-col mt-8 p-4 bg-white rounded shadow-lg md:flex-row">
+            <div className="thumbnail mb-4 md:w-1/2 md:mb-0">
+              <img src="https://www.isubscribe.com.au/images/covers/au/5254/41506/xlarge/TheUltimateGuidetoComicBooks282023142352.jpg" alt="" className="w-full h-auto" />
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-            <button className="bg-blue-500 text-white px-4 py-2 mt-4">ADD TO CART</button>
+            <div className="details w-full md:w-1/2 md:ml-4">
+              <h2 className="text-3xl font-semibold mb-2">{comic.title}</h2>
+              <p className="text-yellow-500 text-lg mb-2">⭐️⭐️⭐️⭐️⭐️ 5/5</p>
+              <p className="text-gray-700 mb-2">Author: {comic.author}</p>
+              <p className="text-gray-700 mb-2">Publisher: {comic.publisher}</p>
+              <p className="text-gray-700 mb-2">Price: ${comic.price}</p>
+              <p className="text-gray-700 mb-4">{comic.description}</p>
+              <button className="bg-gray-700 text-white px-4 py-2 hover:bg-gray-900 transition duration-300">ADD TO CART</button>
+            </div>
           </div>
-        </div>
-      )
+        </>
+      );
+      
+      
 }
 
 export default ComicDetail
