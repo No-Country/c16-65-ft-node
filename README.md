@@ -163,17 +163,17 @@ npm start
     </td>
 <td align='center'>
       <div >
-        <a href="https://github.com/faviofz" target="_blank" rel="author">
-          <img width="110" src="https://avatars.githubusercontent.com/u/65041258?v=4"/>
+        <a href="https://github.com/ygdani89" target="_blank" rel="author">
+          <img width="110" src="https://avatars.githubusercontent.com/u/124802049?v=4"/>
         </a>
-        <a href="https://github.com/faviofz" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem;">Daniel Perea</br><small>Front-End</small></h4>
+        <a href="https://github.com/ygdani89" target="_blank" rel="author">
+          <h4 style="margin-top: 1rem;">Daniel Perea Mosquera</br><small>Front-End</small></h4>
         </a>
         <div style='display: flex; flex-direction: column'>
-        <a href="https://github.com/faviofz" target="_blank">
+        <a href="https://github.com/ygdani89" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/faviofernandez/" target="_blank">
+        <a href="https://www.linkedin.com/in/daniel-perea-mosquera-3b3017127/" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
