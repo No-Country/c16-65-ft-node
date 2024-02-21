@@ -10,7 +10,7 @@ function Card({ title, price }) {
   const handleAddToCart = () => {
     addToCart({ id: title, price });
   };
-  const { comicId } = useParams()
+  // const { comicId } = useParams()
 
   const handleRemoveFromCart = () => {
     removeItem(title); // Utiliza el título (u otra propiedad única) para identificar el producto
@@ -18,9 +18,9 @@ function Card({ title, price }) {
 
   return (
     <div className="max-w-xs mx-auto mb-4 bg-slate-500 text-white rounded-md overflow-hidden">
-      <Link to="/detail">
+   
         <img className="w-full" src="https://storage.googleapis.com/hipcomic/p/d763a667649efd0794c739cf84d05fb5-800.jpg" alt={title} />
-      </Link>
+
       <div className="p-4 text-center">
         <h2 className="text-sm">{title}</h2>
         <p className="font-bold">${price}</p>

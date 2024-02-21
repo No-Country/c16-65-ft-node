@@ -5,10 +5,10 @@ import { Link, useParams } from 'react-router-dom'
 function Products() {
 
   const [data, setData] = useState([])
-  const { comicId } = useParams()
+  // const { comicId } = useParams()
 
   useEffect(() => {
-    fetch("https://no-country-cwv9.onrender.com/api/comics?limit=10")
+    fetch("https://no-country-cwv9.onrender.com/api/comics?page=1")
       .then((response) => response.json())
       .then((data) => setData(data.comics.docs));
   }, []);
@@ -19,7 +19,7 @@ function Products() {
       {/* div que contiene las cards  */}
 
       {data.map((item) => (
-        <Link to={`/comic-detail/${comicId}`}>
+        <Link to={`/comic-detail/${item._id}`}>
           <Card
             key={item._id}
             title={item.title}

@@ -9,7 +9,7 @@ function ComicDetail() {
     const { comicId } = useParams()
     console.log(useParams())
     useEffect(() => {
-        fetch('https://no-country-cwv9.onrender.com/api/comics/65cbc6551f1455f2ea324bd1')
+        fetch(`https://no-country-cwv9.onrender.com/api/comics/${comicId}`)
             .then((response) => response.json())
             .then((data) => {
                 setComic(data.oneComic)
@@ -31,7 +31,7 @@ function ComicDetail() {
             {loading && <p>Loading...</p>}
             {!loading && (
                 <>
-                    <Link to="/">
+                    <Link to="/products">
                         <button className="bg-gray-700 text-white px-4 py-2 mt-4 hover:bg-gray-900 transition duration-300">
                             BACK
                         </button>
