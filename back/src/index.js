@@ -8,7 +8,7 @@ import envconfig from "./config/config.js";
 
 //Auth0 require
 import { auth } from "express-openid-connect";
-//const { auth } = require("express-openid-connect");
+
 //Conexión a la base de datos
 connection();
 
@@ -46,6 +46,10 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 //Auth0
 app.use(auth(config));
+
+app.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
 
 // RUTAS
 app.use("/api/comics", route_comic);
