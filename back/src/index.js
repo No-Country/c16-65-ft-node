@@ -24,6 +24,7 @@ const specs = swaggerJSDoc(swaggerOptions)
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
 import route_comic from "./routes/comic.js"
+import route_users from "./routes/users.js"
 
 app.use(cors());
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // RUTAS
 app.use("/api/comics", route_comic);
+app.use("/api/users", route_users);
 
 app.listen(PORT, () => {
   console.log("Servidor corriendo en el puerto" + PORT);
