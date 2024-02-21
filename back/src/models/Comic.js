@@ -24,19 +24,22 @@ const ComicSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    maxlength: 15,
+    maxlength: 200,
   },
   publisher: {
     type: String,
     required: true,
+    maxlength: 20,
   },
   category: {
     type: String,
     required: true,
+    maxlength: 20,
   },
   price: {
     type: Number,
     required: true,
+    maxlength: 5,
     validate(value) {
       if (!validator.isInt(value.toString(), { min: 0 })) {
         throw new Error("Precio no aceptado ");
@@ -46,6 +49,7 @@ const ComicSchema = new mongoose.Schema({
   thumbnail: {
     type: String,
     default: "default.png",
+    maxlength: 40,
     validate: {
       validator: function (value) {
         // Validar si es una URL
@@ -66,6 +70,7 @@ const ComicSchema = new mongoose.Schema({
   pdf: {
     type: String,
     required: true,
+    maxlength: 40,
     validate: {
       validator: function (value) {
         // Validar si es una URL
