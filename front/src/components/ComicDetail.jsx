@@ -7,6 +7,7 @@ function ComicDetail() {
     const [loading, setLoading] = useState(true);
 
     const { comicId } = useParams()
+    console.log(useParams())
     useEffect(() => {
         fetch('https://no-country-cwv9.onrender.com/api/comics/65cbc6551f1455f2ea324bd1')
             .then((response) => response.json())
@@ -20,7 +21,6 @@ function ComicDetail() {
             }
             )
         return () => {
-            console.log('Componente desmontado');
         }
 
 
@@ -35,7 +35,8 @@ function ComicDetail() {
                         <button className="bg-gray-700 text-white px-4 py-2 mt-4 hover:bg-gray-900 transition duration-300">
                             BACK
                         </button>
-                    </Link>          <div className="card-detail-container flex flex-col mt-8 p-4 bg-white rounded shadow-lg md:flex-row">
+                    </Link>
+                    <div className="card-detail-container flex flex-col mt-8 p-4 bg-white rounded shadow-lg md:flex-row">
                         <div className="thumbnail mb-4 md:w-1/2 md:mb-0">
                             <img src="https://www.isubscribe.com.au/images/covers/au/5254/41506/xlarge/TheUltimateGuidetoComicBooks282023142352.jpg" alt="" className="w-full h-auto" />
                         </div>
