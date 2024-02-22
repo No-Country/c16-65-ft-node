@@ -16,8 +16,10 @@ const ComicSchema = new mongoose.Schema({
     required: true,
     maxlength: 30,
     validate(value) {
-      if (!validator.isAlpha(value)) {
-        throw new Error("Error al crear el comic, solo se aceptan letras en el autor");
+      if (!/^[A-Za-z\s]+$/.test(value)) {
+        throw new Error(
+          "Error al crear el comic, solo se aceptan letras y espacios en blanco en el autor",
+        );
       }
     },
   },
