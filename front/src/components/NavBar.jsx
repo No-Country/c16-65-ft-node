@@ -19,7 +19,7 @@ const Navbar = () => {
         <ul className="navbar-links flex">
           <li className="px-5"></li>
           <li className="px-5">
-            <Link to="/home">
+            <Link to="/">
               <FaHome />
             </Link>
           </li>

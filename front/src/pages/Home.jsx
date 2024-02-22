@@ -55,12 +55,6 @@ const Home = () => {
           <li>path="/carrito"</li>
           <li>path="/comic-detail/:comicId"</li>
           <li>path="/form"</li>
-          <Route path="/products" element={<Products />} />
-          <Route path="/carrito" element={<CarritoPage />} />
-          <Route path="/comic-detail/:comicId" element={<ComicDetail />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/form" element={<FormCreate />} />
-          <Route path="*" element={<Notfound />} />
         </ol>
       </div>
       <Products />

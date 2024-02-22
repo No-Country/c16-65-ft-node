@@ -1,0 +1,44 @@
+#tarjetita {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+}
+
+h2 {
+  color: #555;
+  margin-top: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+p {
+  margin: 0;
+}
+
+#tarjetita p:first-child {
+  font-weight: bold;
+}
+
+#tarjetita p:last-child {
+  margin-top: 5px;
+}
