@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { RiSubtractFill } from "react-icons/ri";
-import { Context } from "../context/Context";
-import { Link } from "react-router-dom";
+import { Context } from "../context/Context"
+
 
 function Card({ title, price }) {
   const { addToCart, removeItem } = useContext(Context);
@@ -10,7 +10,7 @@ function Card({ title, price }) {
   const handleAddToCart = () => {
     addToCart({ id: title, price });
   };
-  // const { comicId } = useParams()
+
 
   const handleRemoveFromCart = () => {
     removeItem(title); // Utiliza el título (u otra propiedad única) para identificar el producto
