@@ -25,6 +25,11 @@ paths:
           description: Categoría del cómic
           schema:
             type: string
+        - name: sort
+          in: query
+          description: Ordenar por Precio (asc o desc)
+          schema:
+            type: string
         - name: isAvailable
           in: query
           description: Indica si el cómic está disponible

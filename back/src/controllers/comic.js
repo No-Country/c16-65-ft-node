@@ -187,11 +187,18 @@ const availableComic = async (req, res) => {
 
 const getComicsPaginated = async (req, res) => {
   try {
-    const { limit, page, title, category, isAvailable } = req.query;
+    const { limit, page, title, category, isAvailable, sort } = req.query;
 
+    let sortOptions = {}
+    if (sort === "asc") {
+      sortOptions = { price: 1 }
+    } else if (sort === "desc") {
+      sortOptions = { price: -1 }
+    }
     const options = {
       limit: limit ? parseInt(limit, 10) : 5,
       page: page ? parseInt(page, 10) : 1,
+      sort: sortOptions
     };
 
     let query = {};
