@@ -4,7 +4,6 @@ import "./carrito.css";
 
 const CarritoPage = () => {
   const { cart } = useContext(Context);
-  console.log(cart);
   const getTotalGeneral = () => {
     return cart.reduce((total, item) => total + item.quantity * item.price, 0);
   };
