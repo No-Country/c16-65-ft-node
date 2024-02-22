@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 function Products() {
   const [data, setData] = useState([]);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(4);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 

@@ -81,7 +81,6 @@ function FormCreate() {
               rows="3"
               maxLength="100"
               required
-              
             />
 
             <label
@@ -148,7 +147,6 @@ function FormCreate() {
             </label>
             <Couldinary
               onImageUpload={(imageUrl) => setThumbnailUrl(imageUrl)}
-              
             />
 
             <label htmlFor="pdf" className="block mb-2 text-sm text-gray-600">
