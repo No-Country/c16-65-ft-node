@@ -49,7 +49,7 @@ const ComicSchema = new mongoose.Schema({
   thumbnail: {
     type: String,
     default: "default.png",
-    maxlength: 40,
+    // maxlength: 40,
     validate: {
       validator: function (value) {
         // Validar si es una URL
@@ -58,7 +58,7 @@ const ComicSchema = new mongoose.Schema({
         }
 
         // Validar si termina con .jpg o .png
-        if (!/\.(jpg|png)$/.test(value)) {
+        if (!/\.(jpg|png|jpeg)$/.test(value)) {
           throw new Error("La URL debe terminar con .jpg o .png");
         }
 
@@ -70,7 +70,7 @@ const ComicSchema = new mongoose.Schema({
   pdf: {
     type: String,
     required: true,
-    maxlength: 40,
+    // maxlength: 40,
     validate: {
       validator: function (value) {
         // Validar si es una URL
