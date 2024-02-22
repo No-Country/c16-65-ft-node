@@ -1,8 +1,8 @@
+
 import React, { useContext } from "react";
 import { FaSearch, FaHome, FaCartPlus } from "react-icons/fa";
 import { Context } from "../context/Context";
 import { Link } from "react-router-dom";
-import LoginButton from "../util/LoginButton";
 
 const Navbar = () => {
   const { getTotalQuantity } = useContext(Context);
@@ -32,9 +32,6 @@ const Navbar = () => {
             <Link to="/carrito" className="flex py-1">
               <FaCartPlus /> <samp>{quantity}</samp>{" "}
             </Link>
-          </li>
-          <li className="px-5">
-            <LoginButton />
           </li>
         </ul>
       </div>
