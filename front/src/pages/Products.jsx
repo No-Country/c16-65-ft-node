@@ -1,35 +1,42 @@
-import { useEffect, useState } from 'react'
-import Card from "../components/card"
-import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import Card from "../components/card";
+
 
 function Products() {
-
-  const [data, setData] = useState([])
-  // const { comicId } = useParams()
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch("https://no-country-cwv9.onrender.com/api/comics?limit=100")
-      .then((response) => response.json())
-      .then((data) => setData(data.comics.docs));
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => setData(data.comics.docs))
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
 
 
-  return (
-    <div className="card-list1  grid grid-cols-2 gap-4">
-      {/* div que contiene las cards  */}
 
+  return (
+    <div className="card-list1 grid grid-cols-2 gap-4">
       {data.map((item) => (
-        <Link to={`/comic-detail/${item._id}`}>
+        <div key={item._id} >
           <Card
-            key={item._id}
             title={item.title}
-            image={item.image}
+             thumbnail={item.thumbnail}
             price={item.price}
+            to={`/comic-detail/${item._id}`}
           />
-        </Link>
+        </div>
       ))}
     </div>
   );
 }
 
 export default Products;
+
+
