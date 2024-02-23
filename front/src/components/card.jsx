@@ -1,25 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { RiSubtractFill } from "react-icons/ri";
-import { Context } from "../context/Context"
+import { Context } from "../context/Context";
+import { Link } from "react-router-dom";
 
-
-function Card({ title, price }) {
+function Card({ title, price, thumbnail, to }) {
   const { addToCart, removeItem } = useContext(Context);
+  const [imageError, setImageError] = useState(false);
 
   const handleAddToCart = () => {
     addToCart({ id: title, price });
   };
 
-
   const handleRemoveFromCart = () => {
-    removeItem(title); // Utiliza el título (u otra propiedad única) para identificar el producto
+    removeItem(title);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
   };
 
   return (
     <div className="max-w-xs mx-auto mb-4 bg-slate-500 text-white rounded-md overflow-hidden">
-   
-        <img className="w-full" src="https://storage.googleapis.com/hipcomic/p/d763a667649efd0794c739cf84d05fb5-800.jpg" alt={title} />
+      <Link to={to}>
+        <img
+          className="w-full"
+          src={imageError ? "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg" : thumbnail}
+          alt={title}
+          onError={handleImageError}
+        />
+      </Link>
 
       <div className="p-4 text-center">
         <h2 className="text-sm">{title}</h2>
@@ -31,7 +41,7 @@ function Card({ title, price }) {
           >
             <RiSubtractFill />
           </button>
-          
+
           <button className="text-white p-2 rounded" onClick={handleAddToCart}>
             <FaCartPlus />
           </button>
@@ -42,4 +52,3 @@ function Card({ title, price }) {
 }
 
 export default Card;
-
