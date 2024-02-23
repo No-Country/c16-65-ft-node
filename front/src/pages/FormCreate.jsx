@@ -20,15 +20,15 @@ function FormCreate() {
           pdf: "",
         }}
         onSubmit={async (values, { resetForm }) => {
+           values.thumbnail = thumbnailUrl;
+          //? console.log("Objeto que se está enviando:", values); // Agregado para ver el objeto en la consola
           try {
-            values.thumbnail = thumbnailUrl;
             await createNewComic(values);
             resetForm();
             setThumbnailUrl("");
           } catch (error) {
-            console.error(error);
+            console.error("Error al enviar el formulario:", error);
           }
-          console.log(values);
         }}
       >
         {({ handleChange, handleSubmit }) => (
