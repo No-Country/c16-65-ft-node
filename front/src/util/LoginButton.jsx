@@ -5,8 +5,6 @@ const LoginButton = () => {
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0();
 
-  //console.log(user);
-
   if (isAuthenticated) {
     return (
       <div>
