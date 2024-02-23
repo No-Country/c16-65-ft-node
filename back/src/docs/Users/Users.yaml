@@ -1,0 +1,44 @@
+paths:
+  /api/users:
+    get:
+      summary: Obtiene todos los usuarios
+      tags:
+        - Usuarios
+      responses:
+        "200":
+          description: Devuelve todos los usuarios
+
+  /api/users/create:
+    post:
+      summary: Crea un usuario
+      tags:
+        - Usuarios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                  description: Nombre de usuario
+                email:
+                  type: string
+                  description: Correo electrónico del usuario
+                picture:
+                  type: string
+                  description: URL de la imagen del usuario
+              required:
+                - nickname
+                - email
+                - picture
+            example:
+              nickname: usuario1
+              email: usuario1@example.com
+              picture: https://example.com/user1.jpg
+      responses:
+        "200":
+          description: Usuario creado correctamente
+        "400":
+          description: Error al crear usuario
