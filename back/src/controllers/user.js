@@ -32,7 +32,7 @@ const createUser = async (req, res) => {
 
     if (existsUser) {
       return res.status(400).json({
-        status: "Error",
+        status: "Success",
         mensaje: "El correo electrónico ya está registrado",
         existsUser
       });
