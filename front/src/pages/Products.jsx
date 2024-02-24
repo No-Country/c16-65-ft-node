@@ -5,8 +5,9 @@ function Products() {
   const [data, setData] = useState([]);
   const [limit, setLimit] = useState(4);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  console.log(data);
+  const [totalDocs, setTotalDocs] = useState(0);
+  console.log("data1", data);
+  console.log("totalDocs", totalDocs);
 
   const fetchData = async () => {
     try {
@@ -14,8 +15,9 @@ function Products() {
         `https://no-country-cwv9.onrender.com/api/comics?limit=${limit}&page=${page}`
       );
       const newData = await response.json();
-      setData((prevData) => [...prevData, ...newData.comics.docs]);
-      setTotalPages(newData.totalPages);
+      console.log("newData", newData.comics.docs);
+      setData(Array.from(new Set([...data, ...newData.comics.docs])));
+      setTotalDocs(newData.comics.totalDocs);
     } catch (error) {
       console.error("Error al obtener datos:", error);
     }
@@ -45,22 +47,24 @@ function Products() {
         ))}
       </div>
       <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <button
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            backgroundColor: "#4CAF50",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            transition: "background-color 0.3s",
-          }}
-          onClick={loadMore}
-        >
-          Cargar más comics
-        </button>
+        {data.length < totalDocs ? (
+          <button
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              transition: "background-color 0.3s",
+            }}
+            onClick={loadMore}
+          >
+            Cargar más comics
+          </button>
+        ) : null}
       </div>
     </>
   );
