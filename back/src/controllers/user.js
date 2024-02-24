@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
     const existsUser = await userModel.findOne({ email });
 
     if (existsUser) {
-      return res.status(400).json({
+      return res.status(409).json({
         status: "Error",
         mensaje: "El correo electrónico ya está registrado",
         existsUser
