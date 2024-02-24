@@ -5,5 +5,6 @@ import CartController from "../controllers/cart.js"
 router.get("/", CartController.getCarts);
 router.get("/:id", CartController.getCartById);
 router.post("/create", CartController.createCartEmpty);
+router.post("/add/:cid/product/:pid", CartController.addProdInCart);
 
 export default router;
