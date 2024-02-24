@@ -1,4 +1,5 @@
 import { userModel } from "../models/User.js";
+import CartController from "../controllers/cart.js"
 
 const getUsers = async (req, res) => {
   try {
@@ -31,13 +32,14 @@ const createUser = async (req, res) => {
 
     if (existsUser) {
       return res.status(400).json({
-        status: "Error",
+        status: "Success",
         mensaje: "El correo electrónico ya está registrado",
         existsUser
       });
     }
 
-    const newUser = await userModel.create({ nickname, email, picture });
+    const cartUser = await CartController.createCartEmpty()
+    const newUser = await userModel.create({ nickname, email, picture, cart: cartUser._id });
     return res.status(200).json({
       status: "Success",
       mensaje: "Usuario creado con éxito",
@@ -46,7 +48,7 @@ const createUser = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       status: "Error",
-      mensaje: "Error al crear el usuarios",
+      mensaje: "Error al crear el usuario",
       error: error,
     });
   }
