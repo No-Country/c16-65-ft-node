@@ -17,6 +17,20 @@ export function ContextProvider({ children }) {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
+  const groupProducts = (cartItems) => {
+    const groupedProducts = {};
+
+    cartItems.forEach((item) => {
+      if (groupedProducts[item.title]) {
+        groupedProducts[item.title].quantity += item.quantity;
+      } else {
+        groupedProducts[item.title] = { ...item };
+      }
+    });
+
+    return Object.values(groupedProducts);
+  };
+
   const addToCart = (item) => {
     const itemFound = cart.find((e) => e.id === item.id);
 
@@ -29,9 +43,15 @@ export function ContextProvider({ children }) {
     }
   };
 
-  const removeItem = (id) => {
+  const addToGroupedCart = (item) => {
+    const updatedGroupedCart = groupProducts([...cart, item]);
+    updateCartAndLocalStorage(updatedGroupedCart);
+  };
+
+  //! cambio
+  const removeItem = (title) => {
     const updatedCart = cart
-      .map((e) => (e.id === id ? { ...e, quantity: e.quantity - 1 } : e))
+      .map((e) => (e.title === title ? { ...e, quantity: e.quantity - 1 } : e))
       .filter((e) => e.quantity > 0);
     updateCartAndLocalStorage(updatedCart);
   };
@@ -40,5 +60,10 @@ export function ContextProvider({ children }) {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   };
 
-  return <Context.Provider value={{ addToCart, removeItem, cart, getTotalQuantity }}>{children}</Context.Provider>;
+  return (
+    <Context.Provider value={{ addToCart, removeItem, cart, getTotalQuantity, addToGroupedCart }}>
+      {children}
+    </Context.Provider>
+  );
 }
+

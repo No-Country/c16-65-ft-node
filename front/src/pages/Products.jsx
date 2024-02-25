@@ -18,18 +18,17 @@ function Products() {
       });
   }, []);
 
-  console.log("lo que hay en data:", data);
-
   return (
-    <div className="card-list1 grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
       {data.map((item) => (
-        <div key={item._id}>
+        <div key={item._id} className="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
           <Card
             _id={item._id}
             title={item.title}
             price={item.price}
             thumbnail={item.thumbnail}
             to={`/comic-detail/${item._id}`}
+            backupImage="https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"
           />
         </div>
       ))}
