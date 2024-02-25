@@ -19,9 +19,9 @@ const getUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { nickname, email, picture } = req.body;
+    const { nickname, email, picture, name } = req.body;
 
-    if (!nickname || !email || !picture) {
+    if (!nickname || !email || !picture || !name) {
       return res.status(400).json({
         status: "Error",
         mensaje: "Los campos 'nickname', 'email' y 'picture' son obligatorios.",
@@ -39,7 +39,7 @@ const createUser = async (req, res) => {
     }
 
     const cartUser = await CartController.createCartEmpty()
-    const newUser = await userModel.create({ nickname, email, picture, cart: cartUser._id });
+    const newUser = await userModel.create({ nickname, name, email, picture, cart: cartUser._id });
     return res.status(200).json({
       status: "Success",
       mensaje: "Usuario creado con éxito",
