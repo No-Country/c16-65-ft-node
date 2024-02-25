@@ -21,6 +21,7 @@ const LoginButton = () => {
       nickname: user.nickname,
       email: user.email,
       picture: user.picture,
+      name: user.name,
     };
 
     try {
