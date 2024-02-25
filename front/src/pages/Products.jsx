@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/card";
 
-
 function Products() {
   const [data, setData] = useState([]);
 
@@ -19,16 +18,17 @@ function Products() {
       });
   }, []);
 
-
+  console.log("lo que hay en data:", data);
 
   return (
     <div className="card-list1 grid grid-cols-2 gap-4">
       {data.map((item) => (
-        <div key={item._id} >
+        <div key={item._id}>
           <Card
+            _id={item._id}
             title={item.title}
-             thumbnail={item.thumbnail}
             price={item.price}
+            thumbnail={item.thumbnail}
             to={`/comic-detail/${item._id}`}
           />
         </div>
@@ -38,5 +38,3 @@ function Products() {
 }
 
 export default Products;
-
-
