@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
-import { FaCartPlus } from "react-icons/fa";
-import { RiSubtractFill } from "react-icons/ri";
-import { Context } from "../context/Context";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import { FaCartPlus } from 'react-icons/fa';
+import { RiSubtractFill } from 'react-icons/ri';
+import { Context } from '../context/Context';
+import { Link } from 'react-router-dom';
 
-function Card({ title, price, thumbnail, to }) {
-  const { addToCart, removeItem } = useContext(Context);
+function Card({ _id, title, price, thumbnail, to, backupImage }) {
+  const { addToGroupedCart, removeItem } = useContext(Context);
   const [imageError, setImageError] = useState(false);
 
   const handleAddToCart = () => {
-    addToCart({ id: title, price });
+    addToGroupedCart({ _id, title, price, thumbnail, quantity: 1 });
   };
 
   const handleRemoveFromCart = () => {
@@ -23,12 +23,14 @@ function Card({ title, price, thumbnail, to }) {
   return (
     <div className="max-w-xs mx-auto mb-4 bg-slate-500 text-white rounded-md overflow-hidden">
       <Link to={to}>
-        <img
-          className="w-full"
-          src={imageError ? "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg" : thumbnail}
-          alt={title}
-          onError={handleImageError}
-        />
+        <div className="w-full h-32 object-cover flex justify-center m-2">
+          <img
+            className="w-50 h-full bg-cover rounded-md"
+            src={imageError ? backupImage : thumbnail || backupImage}
+            alt={title}
+            onError={handleImageError}
+          />
+        </div>
       </Link>
 
       <div className="p-4 text-center">
@@ -41,9 +43,10 @@ function Card({ title, price, thumbnail, to }) {
           >
             <RiSubtractFill />
           </button>
-
           <button className="text-white p-2 rounded" onClick={handleAddToCart}>
-            <FaCartPlus />
+            <Link >
+              <FaCartPlus />
+            </Link>
           </button>
         </div>
       </div>
