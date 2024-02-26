@@ -1,5 +1,6 @@
 import { userModel } from "../models/User.js";
 import CartController from "../controllers/cart.js"
+import { sendCreateAccount } from "../utils/email.js"
 
 const getUsers = async (req, res) => {
   try {
@@ -40,6 +41,7 @@ const createUser = async (req, res) => {
 
     const cartUser = await CartController.createCartEmpty()
     const newUser = await userModel.create({ nickname, name, email, picture, cart: cartUser._id });
+    await sendCreateAccount(email)
     return res.status(200).json({
       status: "Success",
       mensaje: "Usuario creado con éxito",
