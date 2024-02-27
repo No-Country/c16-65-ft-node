@@ -1,5 +1,6 @@
 import { cartModel } from "../models/Cart.js"
 import { comicModel } from "../models/Comic.js"
+import { userModel } from "../models/User.js"
 
 const getCarts = async (req, res) => {
     try {
@@ -33,6 +34,41 @@ const getCartById = async (req, res) => {
         });
     }
 }
+
+const getCartByEmail = async (req, res) => {
+    try {
+        const email = req.params.email;
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({
+                status: "Error",
+                message: "Usuario no encontrado",
+            });
+        }
+
+        const cart = await cartModel.findById(user.cart);
+
+        if (!cart) {
+            return res.status(404).json({
+                status: "Error",
+                message: "Carrito no encontrado para este usuario",
+            });
+        }
+
+        return res.status(200).json({
+            status: "Success",
+            cart,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            status: "Error",
+            message: "Error al obtener el carrito",
+            error: error.message,
+        });
+    }
+};
+
 
 const createCartEmpty = async (req, res) => {
     try {
@@ -99,5 +135,6 @@ export default {
     getCarts,
     getCartById,
     createCartEmpty,
-    addProdInCart
+    addProdInCart,
+    getCartByEmail
 }

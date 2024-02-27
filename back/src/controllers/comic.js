@@ -1,20 +1,20 @@
 import { comicModel } from "../models/Comic.js";
 
-// const getAllComics = async (req, res) => {
-//   try {
-//     const comics = await comicModel.find();
-//     return res.status(200).json({
-//       status: "Success",
-//       comics,
-//     });
-//   } catch (error) {
-//     return res.status(400).json({
-//       status: "Error",
-//       mensaje: "Error al obtener los comics",
-//       error: error,
-//     });
-//   }
-// };
+const getAllComics = async (req, res) => {
+  try {
+    const comics = await comicModel.find();
+    return res.status(200).json({
+      status: "Success",
+      comics,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      status: "Error",
+      mensaje: "Error al obtener los comics",
+      error: error,
+    });
+  }
+};
 
 const getComics = async (req, res) => {
   try {
@@ -230,6 +230,7 @@ const getComicsPaginated = async (req, res) => {
 };
 
 export default {
+  getAllComics,
   createComic,
   getComics,
   getOneComic,

@@ -39,6 +39,15 @@ paths:
         "200":
           description: Devuelve los Comics
 
+  /api/comics/all:
+    get:
+      summary: Obtiene los Comics sin Paginar
+      tags:
+        - Comics
+      responses:
+        "200":
+          description: Devuelve los Comics sin Paginar
+
   /api/comics/{id}:
     get:
       summary: Obtiene un Comic por id

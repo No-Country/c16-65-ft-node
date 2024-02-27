@@ -26,6 +26,24 @@ paths:
         "400":
           description: Error al obtener el carrito
 
+  /api/carts/search/{email}:
+    get:
+      summary: Obtiene un carrito por Email
+      tags:
+        - Carritos
+      parameters:
+        - name: email
+          in: path
+          required: true
+          description: Email del usuario
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Devuelve un carrito por Email
+        "400":
+          description: Error al obtener el carrito
+
   /api/carts/add/{cid}/product/{pid}:
     post:
       summary: Agrega un producto al carrito
