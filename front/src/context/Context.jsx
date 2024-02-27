@@ -1,16 +1,22 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Context = createContext(null);
 
 export function ContextProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
+    if (isAuthenticated == true) {
+      console.log("Está autenticado");
+    } else {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        setCart(JSON.parse(storedCart));
+      }
     }
-  }, []);
+  }, [isAuthenticated]);
 
   const updateCartAndLocalStorage = (newCart) => {
     setCart(newCart);
@@ -66,4 +72,3 @@ export function ContextProvider({ children }) {
     </Context.Provider>
   );
 }
-
