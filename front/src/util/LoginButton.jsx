@@ -32,11 +32,13 @@ const LoginButton = () => {
         },
         body: JSON.stringify(parametros),
       });
-
+      const data = await response.json();
       if (response.ok) {
         console.log("Solicitud POST enviada con éxito");
+        console.log(data.newUser)
       } else if (response.status === 409) {
         console.error("Usuario ya Registrado");
+        console.log(data.existsUser)
       }
     } catch (error) {
       console.error("Error al enviar la solicitud POST:", error);
