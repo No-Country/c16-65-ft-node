@@ -9,6 +9,10 @@ export function ContextProvider({ children }) {
 
   useEffect(() => {
     if (isAuthenticated == true) {
+      const userId = user.email;
+      // GET con el email
+      // Obtengo el carrito activo del usuario
+      // Sumo los productos del carrito activo + los carritos del local storage y elimino local storage
       console.log("Está autenticado");
     } else {
       const storedCart = localStorage.getItem("cart");
@@ -39,6 +43,9 @@ export function ContextProvider({ children }) {
 
   const addToCart = (item) => {
     const itemFound = cart.find((e) => e.id === item.id);
+    // Si está autenticado uso el carrito del Back (DB)
+
+    // Si no está autenticado uso el carrito del local storage
 
     if (itemFound) {
       const updatedCart = cart.map((e) => (e.id === item.id ? { ...e, quantity: e.quantity + 1 } : e));
