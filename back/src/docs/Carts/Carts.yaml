@@ -67,3 +67,45 @@ paths:
           description: Producto agregado al carrito correctamente
         "400":
           description: Error al agregar producto al carrito
+
+  /api/carts/delete/{cid}/product/{pid}:
+    delete:
+      summary: Elimina un producto del carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto a eliminar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado del carrito correctamente
+        "400":
+          description: Error al eliminar producto del carrito
+
+  /api/carts/delete/{cid}:
+    delete:
+      summary: Vaciar el carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito vaciado con exito
+        "400":
+          description: Error al vaciar el carrito
