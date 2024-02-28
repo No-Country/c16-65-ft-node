@@ -1,27 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
 
 const LoginButton = () => {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
-    useAuth0();
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+  const [userLocal, setUserLocal] = useState(null);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      enviarSolicitudPost();
+    const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+    if (!isAuthenticated && userFromLocalStorage) {
+      setUserLocal(userFromLocalStorage);
     }
+    enviarSolicitudPost();
   }, [isAuthenticated]);
 
   const enviarSolicitudPost = async () => {
-    if (!user) {
+    if (!user && !userLocal) {
       return;
     }
 
+    const userData = user || userLocal;
+
     const url = "https://no-country-cwv9.onrender.com/api/users/create";
     const parametros = {
-      nickname: user.nickname,
-      email: user.email,
-      picture: user.picture,
-      name: user.name,
+      nickname: userData.nickname,
+      email: userData.email,
+      picture: userData.picture,
+      name: userData.name,
     };
 
     try {
@@ -35,29 +40,32 @@ const LoginButton = () => {
       const data = await response.json();
       if (response.ok) {
         console.log("Solicitud POST enviada con éxito");
-        console.log(data.newUser)
+        console.log(data.newUser);
+        localStorage.setItem("user", JSON.stringify(data.newUser));
       } else if (response.status === 409) {
         console.error("Usuario ya Registrado");
-        console.log(data.existsUser)
+        console.log(data.existsUser);
+        localStorage.setItem("user", JSON.stringify(data.existsUser));
       }
     } catch (error) {
       console.error("Error al enviar la solicitud POST:", error);
     }
   };
 
-  // console.log(user);
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUserLocal(null);
+    logout({ logoutParams: { returnTo: window.location.origin } });
+  };
 
-  if (isAuthenticated) {
+  if (isAuthenticated || userLocal) {
+    const currentUser = isAuthenticated ? user : userLocal;
     return (
       <div>
-        <img src={user.picture} alt={user.name} width="20px" height="20px" />
-        <button
-          onClick={() =>
-            logout({ logoutParams: { returnTo: window.location.origin } })
-          }
-        >
-          Log Out
-        </button>
+        <Link to={"/profile"}>
+          <img src={currentUser.picture} alt={currentUser.name} width="20px" height="20px" />
+        </Link>
+        <button onClick={handleLogout}>Log Out</button>
       </div>
     );
   }
