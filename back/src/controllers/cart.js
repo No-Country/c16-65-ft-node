@@ -21,7 +21,7 @@ const getCarts = async (req, res) => {
 const getCartById = async (req, res) => {
     try {
         const idCart = req.params.id
-        const cart = await cartModel.findById(idCart)
+        const cart = await cartModel.findById(idCart).populate("comics._id")
         return res.status(200).json({
             status: "Success",
             cart,
