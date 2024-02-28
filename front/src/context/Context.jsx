@@ -1,26 +1,51 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { getCart, addProductCart } from "../api/post.api";
 
 export const Context = createContext(null);
 
 export function ContextProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [userLocal, setUserLocal] = useState(null);
   const { user, isAuthenticated } = useAuth0();
 
+  let currentUser = isAuthenticated ? user : userLocal;
+
   useEffect(() => {
-    if (isAuthenticated == true) {
-      const userId = user.email;
-      // GET con el email
-      // Obtengo el carrito activo del usuario
-      // Sumo los productos del carrito activo + los carritos del local storage y elimino local storage
-      console.log("Está autenticado");
-    } else {
-      const storedCart = localStorage.getItem("cart");
-      if (storedCart) {
-        setCart(JSON.parse(storedCart));
-      }
+    const userFromLocalStorage = JSON.parse(localStorage.getItem("user"));
+    if (!isAuthenticated && userFromLocalStorage) {
+      // Si el usuario recuperado del almacenamiento local no tiene la propiedad 'cart', inicialízala como un objeto vacío
+      setUserLocal(userFromLocalStorage.cart ? userFromLocalStorage : { ...userFromLocalStorage, cart: {} });
     }
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        let currentUser = isAuthenticated ? user : userLocal;
+        if (currentUser) {
+          const response = await getCart(currentUser.email);
+          const cartData = response.cart.products;
+          setCart(cartData);
+        } else {
+          const storedCart = localStorage.getItem("cart");
+          if (storedCart) {
+            setCart(JSON.parse(storedCart));
+          }
+        }
+      } catch (error) {
+        console.error("Error al obtener el carrito:", error);
+      }
+    };
+
+    fetchCart();
+  }, [isAuthenticated, user, userLocal]);
+
+  // const traerCarrito = async () => {
+  //   const carrito = await getCart("javierdamiani74@gmail.com");
+  //   console.log(carrito);
+  // };
+  // traerCarrito();
 
   const updateCartAndLocalStorage = (newCart) => {
     setCart(newCart);
@@ -57,8 +82,9 @@ export function ContextProvider({ children }) {
   };
 
   const addToGroupedCart = (item) => {
-    const updatedGroupedCart = groupProducts([...cart, item]);
-    updateCartAndLocalStorage(updatedGroupedCart);
+    console.log(item._id);
+    addProductCart(currentUser.cart, item._id);
+    console.log(item, "hola");
   };
 
   //! cambio
