@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 import { Context } from "../context/Context";
 
-const ComicDetail = ({ _id, backupImage}) => {
-  const { addToGroupedCart,} = useContext(Context);
+const ComicDetail = ({ _id, backupImage }) => {
+  const { addToGroupedCart, } = useContext(Context);
   const [comic, setComic] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
@@ -13,14 +12,9 @@ const ComicDetail = ({ _id, backupImage}) => {
   const { comicId } = useParams();
 
   const handleAddToCart = () => {
-    addToGroupedCart({
-      _id,
-      title: comic.title,
-      price: comic.price,
-      thumbnail: comic.thumbnail,
-      quantity: 1,
-    });
+    addToGroupedCart({ _id: comicId });
   };
+
 
   useEffect(() => {
     fetch(`https://no-country-cwv9.onrender.com/api/comics/${comicId}`)

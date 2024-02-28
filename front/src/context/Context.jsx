@@ -41,12 +41,6 @@ export function ContextProvider({ children }) {
     fetchCart();
   }, [isAuthenticated, user, userLocal]);
 
-  // const traerCarrito = async () => {
-  //   const carrito = await getCart("javierdamiani74@gmail.com");
-  //   console.log(carrito);
-  // };
-  // traerCarrito();
-
   const updateCartAndLocalStorage = (newCart) => {
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
@@ -82,9 +76,9 @@ export function ContextProvider({ children }) {
   };
 
   const addToGroupedCart = (item) => {
-    console.log(item._id);
+    // console.log(item._id);
     addProductCart(currentUser.cart, item._id);
-    console.log(item, "hola");
+    // console.log(item, "hola");
   };
 
   //! cambio
@@ -95,9 +89,13 @@ export function ContextProvider({ children }) {
     updateCartAndLocalStorage(updatedCart);
   };
 
+  // const getTotalQuantity = () => {
+  //   return cart.reduce((acc, item) => acc + item.quantity, 0);
+  // };
   const getTotalQuantity = () => {
-    return cart.reduce((acc, item) => acc + item.quantity, 0);
+    return cart.length;
   };
+
 
   return (
     <Context.Provider value={{ addToCart, removeItem, cart, getTotalQuantity, addToGroupedCart }}>
