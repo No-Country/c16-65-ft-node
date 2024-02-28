@@ -38,7 +38,7 @@ const getCartById = async (req, res) => {
 const getCartByEmail = async (req, res) => {
     try {
         const email = req.params.email;
-        const user = await userModel.findOne({ email });
+        const user = await userModel.findOne({ email })
 
         if (!user) {
             return res.status(404).json({
@@ -47,7 +47,7 @@ const getCartByEmail = async (req, res) => {
             });
         }
 
-        const cart = await cartModel.findById(user.cart);
+        const cart = await cartModel.findById(user.cart).populate("products._id");
 
         if (!cart) {
             return res.status(404).json({
