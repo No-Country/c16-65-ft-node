@@ -1,6 +1,11 @@
+@import 'variables.css';
+
 body{
     font-family: "Raleway", sans-serif;
     font-optical-sizing: auto;
     font-weight: 200;
     font-style: normal;
+  }
+  h2{
+    color: var(--primary-color);
   }
