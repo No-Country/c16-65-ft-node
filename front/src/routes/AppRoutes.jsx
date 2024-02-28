@@ -7,6 +7,7 @@ import Notfound from "../pages/Notfound";
 import FormCreate from "../pages/FormCreate";
 import Products from "../pages/Products";
 import ComicDetail from "../components/ComicDetail";
+import EditComic from "../pages/EditComic";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/search" element={<Search />} />
       <Route path="/form" element={<FormCreate />} />
       <Route path="*" element={<Notfound />} />
+      <Route path="/edit" element={<EditComic />} />
     </Routes>
   );
 };
