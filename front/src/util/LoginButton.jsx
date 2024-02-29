@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const LoginButton = () => {
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
   const [userLocal, setUserLocal] = useState(null);
 
   useEffect(() => {
-    const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+    const userFromLocalStorage = JSON.parse(localStorage.getItem("user"));
     if (!isAuthenticated && userFromLocalStorage) {
       setUserLocal(userFromLocalStorage);
     }
@@ -53,7 +53,7 @@ const LoginButton = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     setUserLocal(null);
     logout({ logoutParams: { returnTo: window.location.origin } });
   };
