@@ -40,9 +40,9 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
     <div className="card">
       <Link to={to}>
         <div>
-        <div className="card-image">
+        <div className="card-image-container">
           <img
-            className=""
+            className="card-image"
             src={imageError ? backupImage : thumbnail || backupImage}
             alt={title}
             onError={handleImageError}
@@ -51,8 +51,8 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
         </div>
       </Link>
 
-      <div>
-        <h2 >{title}</h2>
+      <div className="card-description">
+        <h3>{title}</h3>
         <p >${price}</p>
         <div >
           <button
@@ -61,7 +61,7 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
             <RiSubtractFill />
           </button>
           {showAddToCart && (
-            <button className="text-white p-2 rounded" onClick={handleAddToCart}>
+            <button className="text-gray-700 p-2" onClick={handleAddToCart}>
               <Link >
                 <FaCartPlus />
               </Link>

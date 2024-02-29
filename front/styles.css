@@ -9,6 +9,10 @@ body{
   h2{
     color: var( --primary-color);
   }
+  h3{
+    color: var( --primary-color);
+
+  }
   .button{
     background-color: var(--primary-color);
     color: #fff;
@@ -18,14 +22,22 @@ body{
     transition: red 0.3s ease-in-out;
   }
   .card{
-    background-color: rgb(255, 244, 244);
+    background-color: rgb(255, 255, 255);
     
   }
 
+  .card-image-container{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  }
   .card-image{
-    width: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
-  height: auto; /* Mantiene la proporción original de la imagen */
-  max-width: 100%; /* Establece el tamaño máximo de la imagen */
-  display: block; /* Elimina cualquier espacio adicional alrededor de la imagen */
-  object-fit: cover;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .card-description{
+    padding: 10px;
   }
