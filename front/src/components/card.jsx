@@ -21,29 +21,31 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
   };
 
   return (
-    <div className="max-w-xs mx-auto mb-4 bg-slate-500 text-white rounded-md overflow-hidden">
+
+    <div className="card">
       <Link to={to}>
-        <div className="w-full h-32 object-cover flex justify-center m-2">
+        <div>
+        <div className="card-image">
           <img
-            className="w-50 h-full bg-cover rounded-md"
+            className=""
             src={imageError ? backupImage : thumbnail || backupImage}
             alt={title}
             onError={handleImageError}
           />
         </div>
+        </div>
       </Link>
 
-      <div className="p-4 text-center">
-        <h2 className="text-sm">{title}</h2>
-        <p className="font-bold">${price}</p>
-        <div className="flex justify-center mt-2 space-x-2">
+      <div>
+        <h2 >{title}</h2>
+        <p >${price}</p>
+        <div >
           <button
-            className="text-white border border-solid border-black p-2 rounded"
             onClick={handleRemoveFromCart}
           >
             <RiSubtractFill />
           </button>
-          <button className="text-white p-2 rounded" onClick={handleAddToCart}>
+          <button onClick={handleAddToCart}>
             <Link >
               <FaCartPlus />
             </Link>

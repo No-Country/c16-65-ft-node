@@ -17,3 +17,15 @@ body{
     cursor: pointer;
     transition: red 0.3s ease-in-out;
   }
+  .card{
+    background-color: rgb(255, 244, 244);
+    
+  }
+
+  .card-image{
+    width: 100%; /* Hace que la imagen ocupe el 100% del contenedor */
+  height: auto; /* Mantiene la proporción original de la imagen */
+  max-width: 100%; /* Establece el tamaño máximo de la imagen */
+  display: block; /* Elimina cualquier espacio adicional alrededor de la imagen */
+  object-fit: cover;
+  }
