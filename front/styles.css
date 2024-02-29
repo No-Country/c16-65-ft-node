@@ -21,6 +21,26 @@ body{
     cursor: pointer;
     transition: red 0.3s ease-in-out;
   }
+  .navbar{
+    background-color: var(--secondary-color);
+    color:  white;
+
+  }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-logo {
+    width: 200px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px; 
+    list-style: none;
+  }
   .card{
     background-color: rgb(255, 255, 255);
     

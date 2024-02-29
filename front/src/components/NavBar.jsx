@@ -3,6 +3,7 @@ import { FaSearch, FaHome, FaCartPlus } from "react-icons/fa";
 import { Context } from "../context/Context";
 import { Link } from "react-router-dom";
 import LoginButton from "../util/LoginButton";
+import logo from "../assets/logo.png"
 
 const Navbar = () => {
   const { getTotalQuantity } = useContext(Context);
@@ -10,30 +11,27 @@ const Navbar = () => {
   const quantity = getTotalQuantity();
 
   return (
-    <nav className="navbar">
-      <div className="container flex justify-between">
-        {/* Logo */}
-        <h1 className="navbar-logo text-2xl">ComicShop</h1>
-
+    <nav >
+      <div className="navbar navbar-container">
+          <img src={logo} alt=""  className="navbar-logo"/>
         {/* Enlaces de navegación */}
-        <ul className="navbar-links flex">
-          <li className="px-5"></li>
-          <li className="px-5">
+        <ul className="navbar-links">
+          <li >
             <Link to="/">
               <FaHome />
             </Link>
           </li>
-          <li className="px-5">
+          <li >
             <Link to="/search">
               <FaSearch />
             </Link>
           </li>
-          <li className="px-5">
-            <Link to="/carrito" className="flex py-1">
+          <li >
+            <Link to="/carrito" className="">
               <FaCartPlus /> <samp>{quantity}</samp>{" "}
             </Link>
           </li>
-          <li className="px-5">
+          <li >
             <LoginButton />
           </li>
         </ul>
