@@ -49,18 +49,7 @@ function Products() {
       </div>
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         {data.length < totalDocs ? (
-          <button
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              transition: "background-color 0.3s",
-            }}
+          <button className="button"
             onClick={loadMore}
           >
             Cargar más comics

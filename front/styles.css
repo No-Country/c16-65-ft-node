@@ -7,5 +7,14 @@ body{
     font-style: normal;
   }
   h2{
-    color: var(--primary-color);
+    color: var( --primary-color);
+  }
+  .button{
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: red 0.3s ease-in-out;
   }
