@@ -56,7 +56,7 @@ const ComicDetail = ({ _id, backupImage }) => {
       {!loading && (
         <>
           <Link to="/products">
-            <button className="bg-gray-700 text-white px-4 py-2 mt-4 hover:bg-gray-900 transition duration-300">
+            <button className="button">
               BACK
             </button>
           </Link>
@@ -70,10 +70,7 @@ const ComicDetail = ({ _id, backupImage }) => {
               />
             </div>
             <div className="details w-full md:w-1/2 md:ml-4">
-              <h2 className="text-3xl font-semibold mb-2">{comic.title}</h2>
-              <p className="text-yellow-500 text-lg mb-2">
-                ⭐️⭐️⭐️⭐️⭐️ 5/5
-              </p>
+              <h2 className="text-3xl">{comic.title}</h2>
               <p className="text-gray-700 mb-2">Autor: {comic.author}</p>
               <p className="text-gray-700 mb-2"> {comic.publisher}</p>
               <p className="text-gray-700 mb-2">${comic.price}</p>
@@ -82,7 +79,7 @@ const ComicDetail = ({ _id, backupImage }) => {
               {showAddToCart && (
                 <Link to="/carrito">
                   <button
-                    className="bg-gray-700 text-white px-4 py-2 hover:bg-gray-900 transition duration-300"
+                    className="button"
                     onClick={handleAddToCart}
                   >
                     ADD TO CART

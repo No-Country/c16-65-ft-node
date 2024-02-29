@@ -36,15 +36,18 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
   };
 
   return (
-    <div className="max-w-xs mx-auto mb-4 bg-slate-500 text-white rounded-md overflow-hidden">
+
+    <div className="card">
       <Link to={to}>
-        <div className="w-full h-32 object-cover flex justify-center m-2">
+        <div>
+        <div className="card-image-container">
           <img
-            className="w-50 h-full bg-cover rounded-md"
+            className="card-image"
             src={imageError ? backupImage : thumbnail || backupImage}
             alt={title}
             onError={handleImageError}
           />
+        </div>
         </div>
       </Link>
 
@@ -54,7 +57,7 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
         <div className="flex justify-center mt-2 space-x-2">
           {showAddToCart && (
             <button
-              className="text-white border border-solid border-black p-2 rounded"
+              className="text-black border border-solid border-black p-2 rounded"
               onClick={handleRemoveFromCart}
             >
               <RiSubtractFill />
@@ -62,7 +65,7 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
           )}
           {showAddToCart ? (
             <button
-              className="text-white p-2 rounded"
+              className="text-black p-2 rounded"
               onClick={handleAddToCart}
             >
               <Link>

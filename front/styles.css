@@ -1,0 +1,43 @@
+@import 'variables.css';
+
+body{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+  h2{
+    color: var( --primary-color);
+  }
+  h3{
+    color: var( --primary-color);
+
+  }
+  .button{
+    background-color: var(--primary-color);
+    color: #fff;
+    margin: 10px 0;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: red 0.3s ease-in-out;
+  }
+  .card{
+    background-color: rgb(255, 255, 255);
+    
+  }
+
+  .card-image-container{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  }
+  .card-image{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .card-description{
+    padding: 10px;
+  }
