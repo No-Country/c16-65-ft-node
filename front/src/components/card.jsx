@@ -57,7 +57,7 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
         <div className="flex justify-center mt-2 space-x-2">
           {showAddToCart && (
             <button
-              className="text-white border border-solid border-black p-2 rounded"
+              className="text-black border border-solid border-black p-2 rounded"
               onClick={handleRemoveFromCart}
             >
               <RiSubtractFill />
@@ -65,7 +65,7 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
           )}
           {showAddToCart ? (
             <button
-              className="text-white p-2 rounded"
+              className="text-black p-2 rounded"
               onClick={handleAddToCart}
             >
               <Link>
