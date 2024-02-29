@@ -21,15 +21,19 @@ body{
     cursor: pointer;
     transition: red 0.3s ease-in-out;
   }
-  .navbar{
-    background-color: var(--secondary-color);
-    color:  white;
 
-  }
   .navbar-container {
+    background-color: var(--secondary-color);
+    color:  var(--background-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
   }
   
   .navbar-logo {
@@ -40,6 +44,12 @@ body{
     display: flex;
     gap: 20px; 
     list-style: none;
+    align-items: center;
+  }
+
+  .login-button img{
+    width: 25px;
+    border-radius: 100%; 
   }
   .card{
     background-color: rgb(255, 255, 255);

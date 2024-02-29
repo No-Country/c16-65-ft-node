@@ -13,14 +13,12 @@ const Navbar = () => {
   return (
     <nav >
       <div className="navbar navbar-container">
-          <img src={logo} alt=""  className="navbar-logo"/>
+      <Link to="/">
+      <img src={logo} alt=""  className="navbar-logo"/>
+            </Link>
+        
         {/* Enlaces de navegación */}
         <ul className="navbar-links">
-          <li >
-            <Link to="/">
-              <FaHome />
-            </Link>
-          </li>
           <li >
             <Link to="/search">
               <FaSearch />
@@ -28,16 +26,14 @@ const Navbar = () => {
           </li>
           <li >
             <Link to="/carrito" className="">
-              <FaCartPlus /> <samp>{quantity}</samp>{" "}
+            <samp>{quantity}</samp>{" "}<FaCartPlus />
             </Link>
           </li>
-          <li >
+          <li className="login-button">
             <LoginButton />
           </li>
         </ul>
       </div>
-
-      <hr />
     </nav>
   );
 };
