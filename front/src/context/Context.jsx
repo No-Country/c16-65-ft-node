@@ -15,7 +15,11 @@ export function ContextProvider({ children }) {
     const userFromLocalStorage = JSON.parse(localStorage.getItem("user"));
     if (!isAuthenticated && userFromLocalStorage) {
       // Si el usuario recuperado del almacenamiento local no tiene la propiedad 'cart', inicialízala como un objeto vacío
-      setUserLocal(userFromLocalStorage.cart ? userFromLocalStorage : { ...userFromLocalStorage, cart: {} });
+      setUserLocal(
+        userFromLocalStorage.cart
+          ? userFromLocalStorage
+          : { ...userFromLocalStorage, cart: {} }
+      );
     }
   }, [isAuthenticated]);
 
@@ -67,7 +71,9 @@ export function ContextProvider({ children }) {
     // Si no está autenticado uso el carrito del local storage
 
     if (itemFound) {
-      const updatedCart = cart.map((e) => (e.id === item.id ? { ...e, quantity: e.quantity + 1 } : e));
+      const updatedCart = cart.map((e) =>
+        e.id === item.id ? { ...e, quantity: e.quantity + 1 } : e
+      );
       updateCartAndLocalStorage(updatedCart);
     } else {
       const updatedCart = [...cart, { ...item, quantity: 1 }];
@@ -75,9 +81,9 @@ export function ContextProvider({ children }) {
     }
   };
 
-  const addToGroupedCart = (item) => {
+  const addToGroupedCart = async (item) => {
     // console.log(item._id);
-    addProductCart(currentUser.cart, item._id);
+    await addProductCart(currentUser.cart, item._id);
     // console.log(item, "hola");
   };
 
@@ -87,7 +93,7 @@ export function ContextProvider({ children }) {
     //   .map((e) => (e.title === title ? { ...e, quantity: e.quantity - 1 } : e))
     //   .filter((e) => e.quantity > 0);
     // updateCartAndLocalStorage(updatedCart);
-    deleteProductCart(currentUser.cart, pid)
+    deleteProductCart(currentUser.cart, pid);
   };
 
   // const getTotalQuantity = () => {
@@ -97,9 +103,16 @@ export function ContextProvider({ children }) {
     return cart.length;
   };
 
-
   return (
-    <Context.Provider value={{ addToCart, removeItem, cart, getTotalQuantity, addToGroupedCart }}>
+    <Context.Provider
+      value={{
+        addToCart,
+        removeItem,
+        cart,
+        getTotalQuantity,
+        addToGroupedCart,
+      }}
+    >
       {children}
     </Context.Provider>
   );
