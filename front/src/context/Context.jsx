@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getCart, addProductCart } from "../api/post.api";
+import { getCart, addProductCart, deleteProductCart } from "../api/post.api";
 
 export const Context = createContext(null);
 
@@ -82,11 +82,12 @@ export function ContextProvider({ children }) {
   };
 
   //! cambio
-  const removeItem = (title) => {
-    const updatedCart = cart
-      .map((e) => (e.title === title ? { ...e, quantity: e.quantity - 1 } : e))
-      .filter((e) => e.quantity > 0);
-    updateCartAndLocalStorage(updatedCart);
+  const removeItem = (pid) => {
+    // const updatedCart = cart
+    //   .map((e) => (e.title === title ? { ...e, quantity: e.quantity - 1 } : e))
+    //   .filter((e) => e.quantity > 0);
+    // updateCartAndLocalStorage(updatedCart);
+    deleteProductCart(currentUser.cart, pid)
   };
 
   // const getTotalQuantity = () => {

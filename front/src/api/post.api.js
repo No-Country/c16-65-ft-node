@@ -67,3 +67,20 @@ export const addProductCart = async (cid, pid) => {
     console.error("Error al enviar la solicitud POST:", error);
   }
 };
+
+export const deleteProductCart = async (cid, pid) => {
+  const url = `https://no-country-cwv9.onrender.com/api/carts/delete/${cid}/product/${pid}`;
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      console.log("Solicitud POST enviada con éxito");
+    }
+  } catch (error) {
+    console.error("Error al enviar la solicitud POST:", error);
+  }
+};
