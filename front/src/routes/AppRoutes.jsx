@@ -9,6 +9,13 @@ import Products from "../pages/Products";
 import ComicDetail from "../components/ComicDetail";
 import EditComic from "../pages/EditComic";
 import Profile from "../pages/Profile";
+import CheckoutForm from "../pages/CheckoutForm";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51OpHNsEK8KljwIogktpC8S5E3yFdAeMRCEpfFz7tFFII2DkmXF4P2levpNDuCkAf98JEvKBGq9axLh9npk67fBT600pDXU35KU"
+);
 
 const AppRoutes = () => {
   return (
@@ -20,8 +27,16 @@ const AppRoutes = () => {
       <Route path="/comic-detail/:comicId" element={<ComicDetail />} />
       <Route path="/search" element={<Search />} />
       <Route path="/form" element={<FormCreate />} />
-      <Route path="*" element={<Notfound />} />
       <Route path="/edit" element={<EditComic />} />
+      <Route
+        path="/checkout"
+        element={
+          <Elements stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
+        }
+      />
+      <Route path="*" element={<Notfound />} />
     </Routes>
   );
 };
