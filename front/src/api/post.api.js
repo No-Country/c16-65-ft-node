@@ -35,3 +35,52 @@ export const changeAvailable = async (id, requestData) => {
     }
   }
 };
+
+export const getCart = async (email) => {
+  try {
+    const response = await fetch(`https://no-country-cwv9.onrender.com/api/carts/search/${email}`);
+    if (!response.ok) {
+      throw new Error("Error en la petición");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error en la petición:", error);
+    if (error.response) {
+      console.error("Respuesta del servidor:", error.response.data);
+    }
+  }
+};
+
+export const addProductCart = async (cid, pid) => {
+  const url = `https://no-country-cwv9.onrender.com/api/carts/add/${cid}/product/${pid}`;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      console.log("Solicitud POST enviada con éxito");
+    }
+  } catch (error) {
+    console.error("Error al enviar la solicitud POST:", error);
+  }
+};
+
+export const deleteProductCart = async (cid, pid) => {
+  const url = `https://no-country-cwv9.onrender.com/api/carts/delete/${cid}/product/${pid}`;
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      console.log("Solicitud POST enviada con éxito");
+    }
+  } catch (error) {
+    console.error("Error al enviar la solicitud POST:", error);
+  }
+};

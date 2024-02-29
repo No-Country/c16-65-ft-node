@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FaSearch, } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import Card from '../components/card.jsx';
-import Products from './Products.jsx'
+import Card from "../components/card.jsx";
+import Products from "./Products.jsx";
 
 const Home = () => {
   // const [originalComics, setOriginalComics] = useState([]);
@@ -47,42 +47,36 @@ const Home = () => {
   // };
 
   return (
-
-
-
     <>
-    <Products/>
+      <Products />
     </>
-  //   <div>
-  //     <h2>Comics</h2>
+    //   <div>
+    //     <h2>Comics</h2>
 
-  //     <div className="flex ">
-  //       <label><FaSearch/> </label>
-  //       <input className="border border-solid border-black " type="text" onChange={handleSearch} value={searchTerm} />
-  //     </div>
+    //     <div className="flex ">
+    //       <label><FaSearch/> </label>
+    //       <input className="border border-solid border-black " type="text" onChange={handleSearch} value={searchTerm} />
+    //     </div>
 
-  //     <div>
-  //       <label>Filtrar por categoría: </label>
-  //       <select onChange={(e) => filterComicsByCategory(e.target.value)} value={selectedCategory}>
-  //         {categories.map((category, index) => (
-  //           <option key={index} value={category}>
-  //             {category}
-  //           </option>
-  //         ))}
-  //       </select>
-  //     </div>
+    //     <div>
+    //       <label>Filtrar por categoría: </label>
+    //       <select onChange={(e) => filterComicsByCategory(e.target.value)} value={selectedCategory}>
+    //         {categories.map((category, index) => (
+    //           <option key={index} value={category}>
+    //             {category}
+    //           </option>
+    //         ))}
+    //       </select>
+    //     </div>
 
-     
-
-  //     {/* Mostrar cómics como tarjetas */}
-  //     <div className="grid w-49 grid-cols-4 gap-4">
-  //       {comics.map((comic, index) => (
-  //         <Card key={index} title={comic.title} image={comic.image} price={comic.price} />
-  //       ))}
-  //     </div>
-  //   </div>
-   )
+    //     {/* Mostrar cómics como tarjetas */}
+    //     <div className="grid w-49 grid-cols-4 gap-4">
+    //       {comics.map((comic, index) => (
+    //         <Card key={index} title={comic.title} image={comic.image} price={comic.price} />
+    //       ))}
+    //     </div>
+    //   </div>
+  );
 };
 
 export default Home;
-

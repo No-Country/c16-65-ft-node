@@ -1,20 +1,36 @@
 import React, { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import Card from "../components/card";
 
-function Products() {
+const Products = () => {
   const [data, setData] = useState([]);
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
   const [totalDocs, setTotalDocs] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortByPrice, setSortByPrice] = useState("");
+  const [searchTitle, setSearchTitle] = useState("");
+  const [noResults, setNoResults] = useState(false);
 
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://no-country-cwv9.onrender.com/api/comics?limit=${limit}&page=${page}`
+        `https://no-country-cwv9.onrender.com/api/comics?limit=${limit}&page=${page}${
+          selectedCategory ? `&category=${selectedCategory}` : ""
+        }${sortByPrice ? `&sort=${sortByPrice}` : ""}${
+          searchTitle ? `&title=${searchTitle}` : ""
+        }`
       );
       const newData = await response.json();
-      setData(Array.from(new Set([...data, ...newData.comics.docs])));
+
+      if (page === 1) {
+        setData(newData.comics.docs);
+      } else {
+        setData((prevData) => [...prevData, ...newData.comics.docs]);
+      }
+
       setTotalDocs(newData.comics.totalDocs);
+      setNoResults(newData.comics.docs.length === 0);
     } catch (error) {
       console.error("Error al obtener datos:", error);
     }
@@ -24,39 +40,154 @@ function Products() {
     setPage((prevPage) => prevPage + 1);
   };
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setPage(1);
+    setData([]);
+    setTotalDocs(0);
+    setNoResults(false);
+  };
+
+  const handleSortByChange = (e) => {
+    const newSortBy = e.target.value;
+    setSortByPrice(newSortBy);
+    setPage(1);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTitle(e.target.value);
+    setPage(1);
+    setNoResults(false);
+  };
+
   useEffect(() => {
     fetchData();
-  }, [limit, page]);
+  }, [limit, page, selectedCategory, sortByPrice, searchTitle]);
 
   return (
-    <>
-      <div>
-        {data.map((item) => (
-          <div
-            key={item._id}
-          >
-            <Card
-              _id={item._id}
-              title={item.title}
-              price={item.price}
-              thumbnail={item.thumbnail}
-              to={`/comic-detail/${item._id}`}
-              backupImage="https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"
+    <div style={{ display: "flex", borderRadius:"5px",}}>
+      <div
+        id="filtrado"
+        style={{
+          width: "250px",
+          height: "400px",
+          padding: "20px",
+          borderRadius:"5px",
+          borderRadius: "10px",
+          marginRight: "20px",
+        }}
+      >
+
+<div className="search" >
+          {/* <label htmlFor="searchInput">Search:</label> */}
+          <div style={{ position: "relative",borderRadius:"5px" ,boxShadow:"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"  }}>
+
+          <FaSearch
+              style={{
+                position: "absolute",
+                right: "10px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "#777",
+                
+              }}
             />
+            <input
+              type="text"
+              id="searchInput"
+              value={searchTitle}
+              onChange={handleSearchChange}
+            />
+          
           </div>
-        ))}
-      </div>
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        {data.length < totalDocs ? (
-          <button className="button"
-            onClick={loadMore}
+        </div>
+        <div className="category-filter" style={{ cursor:"pointer" ,borderRadius:"5px",boxShadow:"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"  }}>
+          {/* <label htmlFor="categoryDropdown">Category:</label> */}
+          <select
+          style={{ cursor:"pointer" ,borderRadius:"5px",  }}
+            id="categoryDropdown"
+            value={selectedCategory}
+            onChange={(e) => handleCategoryChange(e.target.value)}
           >
-            Cargar más comics
-          </button>
-        ) : null}
+            <option value="">All Categories:</option>
+            <option value="Acción">Acción</option>
+            <option value="Superhéroes">Superhéroes</option>
+            <option value="Fantasía">Fantasía</option>
+            <option value="Misterio">Misterio</option>
+          </select>
+        </div>
+        <div className="sort-by" style={{borderRadius:"5px", boxShadow:"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"  }}>
+          <label htmlFor="sortBy"></label>
+          <select
+            id="sortBy"
+            value={sortByPrice}
+            onChange={handleSortByChange}
+            style={{ cursor:"pointer" ,borderRadius:"5px"  }}
+          >
+            <option value="">Sort by price:</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </div>
+       
       </div>
-    </>
+      <div>
+        {noResults && <h1
+        
+        style={{
+          textAlign: "center",
+          fontSize: "2em", // Puedes ajustar el tamaño según tus preferencias
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}>No results found.</h1>}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
+          {data.map((item) => (
+            <div
+              key={`${item._id}-${item.title}`}
+              className="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105"
+            >
+              <Card
+                _id={item._id}
+                title={item.title}
+                price={item.price}
+                thumbnail={item.thumbnail}
+                to={`/comic-detail/${item._id}`}
+                backupImage="https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"
+              />
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          {data.length < totalDocs && (
+            <button
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                backgroundColor: "#4CAF50",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                transition: "background-color 0.3s",
+                display: "block",
+                margin: "0 auto", // Para centrar horizontalmente
+                
+                  
+                
+              }}
+              onClick={loadMore}
+            >
+              Cargar más comics
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default Products;
+
