@@ -12,9 +12,8 @@ body{
   .button{
     background-color: var(--primary-color);
     color: #fff;
+    margin: 10px 0;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
     transition: red 0.3s ease-in-out;
   }
