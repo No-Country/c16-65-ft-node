@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 import { Context } from "../context/Context";
 
-const ComicDetail = ({ _id, backupImage}) => {
-  const { addToGroupedCart,} = useContext(Context);
-  const [comic, setComic] = useState([]);
+const ComicDetail = () => {
+  const { addToGroupedCart } = useContext(Context);
+  const [comic, setComic] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [imageError, setImageError] = useState(false);
-
   const { comicId } = useParams();
+
+  const handleImageError = (e) => {
+    e.target.src = "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg";
+  };
 
   const handleAddToCart = () => {
     addToGroupedCart({
-      _id,
+      _id: comic._id,
       title: comic.title,
       price: comic.price,
       thumbnail: comic.thumbnail,
@@ -35,16 +36,10 @@ const ComicDetail = ({ _id, backupImage}) => {
       });
   }, [comicId]);
 
-
-
-  const handleImageError = () => {
-    setImageError(true);
-  };
-
   return (
     <>
       {loading && <p>Loading...</p>}
-      {!loading && (
+      {!loading && comic && (
         <>
           <Link to="/products">
             <button className="bg-gray-700 text-white px-4 py-2 mt-4 hover:bg-gray-900 transition duration-300">
@@ -52,11 +47,11 @@ const ComicDetail = ({ _id, backupImage}) => {
             </button>
           </Link>
           <div className="card-detail-container flex flex-col mt-8 p-4 bg-white rounded shadow-lg md:flex-row">
-            <div className="thumbnail mb-4 md:w-1/2 md:mb-0">
+            <div className="thumbnail mb-4 md:w-1/2 md:mb-0 flex justify-center"> 
               <img
-                src={imageError ? backupImage : comic.thumbnail || backupImage}
+                src={comic.thumbnail || "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"}
                 alt=""
-                className="w-full h-auto"
+                className="w-1/2 h-auto"
                 onError={handleImageError}
               />
             </div>
@@ -66,11 +61,10 @@ const ComicDetail = ({ _id, backupImage}) => {
                 ⭐️⭐️⭐️⭐️⭐️ 5/5
               </p>
               <p className="text-gray-700 mb-2">Autor: {comic.author}</p>
-              <p className="text-gray-700 mb-2"> {comic.publisher}</p>
+              <p className="text-gray-700 mb-2">{comic.publisher}</p>
               <p className="text-gray-700 mb-2">${comic.price}</p>
               <p className="text-gray-700 mb-4">{comic.description}</p>
-
-              <Link to="/carrito">
+              <Link to="/cart">
                 <button
                   className="bg-gray-700 text-white px-4 py-2 hover:bg-gray-900 transition duration-300"
                   onClick={handleAddToCart}
@@ -87,7 +81,3 @@ const ComicDetail = ({ _id, backupImage}) => {
 };
 
 export default ComicDetail;
-
-
-
-
