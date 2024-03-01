@@ -37,10 +37,10 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
 
   return (
 
-    <div className="card">
-      <Link to={to}>
-        <div>
-        <div className="card-image-container">
+    <div className=" card">
+    <Link to={to}>
+      
+        <div className="  card-image-container">
           <img
             className="card-image"
             src={imageError ? backupImage : thumbnail || backupImage}
@@ -48,36 +48,37 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
             onError={handleImageError}
           />
         </div>
-        </div>
-      </Link>
-
-      <div className="p-4 text-center">
-        <h2 className="text-sm">{title}</h2>
-        <p className="font-bold">${price}</p>
-        <div className="flex justify-center mt-2 space-x-2">
-          {showAddToCart && (
-            <button
-              className="text-black border border-solid border-black p-2 rounded"
-              onClick={handleRemoveFromCart}
-            >
-              <RiSubtractFill />
-            </button>
-          )}
-          {showAddToCart ? (
-            <button
-              className="text-black p-2 rounded"
-              onClick={handleAddToCart}
-            >
-              <Link>
-                <FaCartPlus />
-              </Link>
-            </button>
-          ) : (
-            <div>Login to add to cart</div>
-          )}
-        </div>
+      
+    </Link>
+  
+    <div className="cont1 p-4 text-center flex flex-col justify-between h-full">
+      <h2 className="text-sm my-auto px-4 truncate">{title}</h2>
+      <p className=" font-bold">${price}</p>
+      <div className="flex justify-center mt-2 space-x-2">
+        {showAddToCart && (
+          <button
+            className="text-black border border-solid border-black p-2 rounded"
+            onClick={handleRemoveFromCart}
+          >
+            <RiSubtractFill />
+          </button>
+        )}
+        {showAddToCart ? (
+          <button
+            className="text-black p-2 rounded"
+            onClick={handleAddToCart}
+          >
+            <Link>
+              <FaCartPlus />
+            </Link>
+          </button>
+        ) : (
+          <div className="login-text">Login to add to cart</div>
+        )}
       </div>
     </div>
+  </div>
+  
   );
 }
 
