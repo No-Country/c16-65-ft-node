@@ -26,8 +26,8 @@ export const createSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "/api/payment/success",
-    cancel_url: "/api/payment/cancel",
+    success_url: "https://no-country-cwv9.onrender.com/api/payment/success",
+    cancel_url: "https://no-country-cwv9.onrender.com/api/payment/cancel",
   });
 
   return res.json(session);
