@@ -36,21 +36,19 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
   };
 
   return (
-
     <div className="card">
       <Link to={to}>
         <div>
-        <div className="card-image-container">
-          <img
-            className="card-image"
-            src={imageError ? backupImage : thumbnail || backupImage}
-            alt={title}
-            onError={handleImageError}
-          />
-        </div>
+          <div className="card-image-container">
+            <img
+              className="card-image"
+              src={imageError ? backupImage : thumbnail || backupImage}
+              alt={title}
+              onError={handleImageError}
+            />
+          </div>
         </div>
       </Link>
-
       <div className="p-4 text-center">
         <h2 className="text-sm">{title}</h2>
         <p className="font-bold">${price}</p>
@@ -79,6 +77,8 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
       </div>
     </div>
   );
+  
+  
 }
 
 export default Card;
