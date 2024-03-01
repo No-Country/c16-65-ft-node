@@ -1,14 +1,9 @@
-import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, Elements, useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 
 import "bootswatch/dist/Lux/bootstrap.min.css";
 import Card from "../components/card";
 import { useState } from "react";
-
-const stripePromise = loadStripe(
-  "pk_test_51OpHNsEK8KljwIogktpC8S5E3yFdAeMRCEpfFz7tFFII2DkmXF4P2levpNDuCkAf98JEvKBGq9axLh9npk67fBT600pDXU35KU"
-);
 
 const CheckoutForm = () => {
   const stripe = useStripe();
