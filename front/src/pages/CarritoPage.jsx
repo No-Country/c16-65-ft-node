@@ -28,6 +28,8 @@ const CarritoPage = () => {
         parametros
       );
 
+      console.log(parametros, "params");
+
       // Redirigir al usuario a la URL de la sesión de pago
       window.location.href = data.url;
     } catch (error) {
