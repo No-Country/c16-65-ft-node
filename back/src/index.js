@@ -28,7 +28,12 @@ import route_users from "./routes/users.js";
 import route_carts from "./routes/carts.js";
 import route_payment from "./routes/payment.js";
 
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
