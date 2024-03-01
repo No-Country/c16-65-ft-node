@@ -13,22 +13,22 @@ const CarritoPage = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Obtener el usuario desde localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // Objeto de datos para enviar en la solicitud POST
+    const parametros = {
+      user: user,
+      // Otros datos que quieras enviar
+    };
+
     try {
-      // Obtener el usuario desde localStorage
-      const user = JSON.parse(localStorage.getItem("user"));
-
-      // Objeto de datos para enviar en la solicitud POST
-      const parametros = {
-        user: user,
-        // Otros datos que quieras enviar
-      };
-
       const { data } = await axios.post(
         "https://no-country-cwv9.onrender.com/api/payment/create-checkout-session",
         parametros
       );
-
       console.log(parametros, "params");
+      console.log("hola");
 
       // Redirigir al usuario a la URL de la sesión de pago
       window.location.href = data.url;

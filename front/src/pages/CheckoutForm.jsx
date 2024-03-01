@@ -13,6 +13,8 @@ const CheckoutForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -23,9 +25,10 @@ const CheckoutForm = () => {
       try {
         const { id } = paymentMethod;
 
-        const { data } = await axios.post("http://localhost:3000/api/payment/create-checkout-session", {
+        const { data } = await axios.post("https://no-country-cwv9.onrender.com/api/payment/create-checkout-session", {
           id,
           amount: 10000,
+          user,
         });
 
         console.log(data);
