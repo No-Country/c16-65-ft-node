@@ -16,17 +16,17 @@ const stripePromise = loadStripe(
 
 function App() {
   return (
-    <ContextProvider>
-      <Router>
-        <div className="main-content">
-          <NavBar />
-          <Elements stripe={stripePromise}>
+    <Elements stripe={stripePromise}>
+      <ContextProvider>
+        <Router>
+          <div className="main-content">
+            <NavBar />
             <AppRoutes />
-          </Elements>
-        </div>
-        <Footer />
-      </Router>
-    </ContextProvider>
+          </div>
+          <Footer />
+        </Router>
+      </ContextProvider>
+    </Elements>
   );
 }
 
