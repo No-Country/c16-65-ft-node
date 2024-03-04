@@ -1,15 +1,5 @@
 import Stripe from "stripe";
 import { cartModel } from "../models/Cart.js";
-import axios from 'axios';
-
-const makePostRequest = async (url, data) => {
-  try {
-    const response = await axios.post(url, data);
-    return response.data;
-  } catch (error) {
-    throw new Error(error.response.data.message || error.message);
-  }
-};
 
 const stripe = new Stripe(
   "sk_test_51OpHNsEK8KljwIog2Ro96dbDBuvPcr2X2DKFwQpDnrK6GSBlnyEiAyE3BFOv8J6Ob1sX2MehVKqn5P00boV3odu300O2oBWoC2"
@@ -36,24 +26,9 @@ export const createSession = async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "https://no-country-cwv9.onrender.com/api/payment/success",
+    success_url: "https://pagetwo.onrender.com/profile",
     cancel_url: "https://no-country-cwv9.onrender.com/api/payment/cancel",
   });
 
-  if (session) {
-    if (session.payment_status === 'paid') {
-      const postData = {
-        email: user.email
-      };
-      await makePostRequest('/api/purchases/create', postData);
-    }
-    return res.json(session);
-  } else {
-    return res.status(500).json({
-      status: "Error",
-      message: "Error al crear la sesión de pago",
-    });
-  }
-
-  // return res.json(session);
+  return res.json(session);
 };
