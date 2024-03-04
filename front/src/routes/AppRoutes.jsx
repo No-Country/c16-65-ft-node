@@ -9,6 +9,7 @@ import Products from "../pages/Products";
 import ComicDetail from "../components/ComicDetail";
 import EditComic from "../pages/EditComic";
 import Profile from "../pages/Profile";
+import CancelPayment from "../pages/CancelPayment";
 // import CheckoutForm from "../pages/CheckoutForm";
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
@@ -28,6 +29,7 @@ const AppRoutes = () => {
       <Route path="/search" element={<Search />} />
       <Route path="/form" element={<FormCreate />} />
       <Route path="/edit" element={<EditComic />} />
+      <Route path="/cancel" element={<CancelPayment />} />
       {/* <Route
         path="/checkout"
         element={
