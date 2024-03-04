@@ -160,7 +160,7 @@ const Products = () => {
             <button className="buttonP"
               onClick={loadMore}
             >
-              Cargar más comics
+              Show more
             </button>
           )}
         </div>
