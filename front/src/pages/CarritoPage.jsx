@@ -27,8 +27,6 @@ const CarritoPage = () => {
         "https://no-country-cwv9.onrender.com/api/payment/create-checkout-session",
         parametros
       );
-      console.log(parametros, "params");
-      console.log("hola");
 
       // Redirigir al usuario a la URL de la sesión de pago
       window.location.href = data.url;
