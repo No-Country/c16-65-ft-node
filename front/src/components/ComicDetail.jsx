@@ -5,12 +5,17 @@ import { Context } from "../context/Context";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const ComicDetail = ({ _id, backupImage }) => {
-  const { addToGroupedCart, } = useContext(Context);
+  const { addToGroupedCart } = useContext(Context);
   const [comic, setComic] = useState([]);
   const [loading, setLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
   const [showAddToCart, setShowAddToCart] = useState(false);
   const { user, isAuthenticated } = useAuth0();
+
+  const handleImageError = (e) => {
+    e.target.src =
+      "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg";
+  };
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -30,7 +35,6 @@ const ComicDetail = ({ _id, backupImage }) => {
     addToGroupedCart({ _id: comicId });
   };
 
-
   useEffect(() => {
     fetch(`https://no-country-cwv9.onrender.com/api/comics/${comicId}`)
       .then((response) => response.json())
@@ -44,44 +48,39 @@ const ComicDetail = ({ _id, backupImage }) => {
       });
   }, [comicId]);
 
-
-
-  const handleImageError = () => {
-    setImageError(true);
-  };
-
   return (
     <>
       {loading && <p>Loading...</p>}
       {!loading && (
         <>
           <Link to="/products">
-            <button className="button">
-              BACK
-            </button>
+            <button className="button">BACK</button>
           </Link>
           <div className="card-detail-container flex flex-col mt-8 p-4 bg-white rounded shadow-lg md:flex-row">
-            <div className="thumbnail mb-4 md:w-1/2 md:mb-0">
+            <div className="thumbnail mb-4 md:w-1/2 md:mb-0 flex justify-center items-center">
               <img
-                src={imageError ? backupImage : comic.thumbnail || backupImage}
+                src={
+                  comic.thumbnail ||
+                  "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"
+                }
                 alt=""
-                className="w-full h-auto"
+                className="w-1/2 h-auto mb-4" // Añade un margen inferior
                 onError={handleImageError}
               />
             </div>
-            <div className="details w-full md:w-1/2 md:ml-4">
-              <h2 className="text-3xl">{comic.title}</h2>
-              <p className="text-gray-700 mb-2">Autor: {comic.author}</p>
-              <p className="text-gray-700 mb-2"> {comic.publisher}</p>
-              <p className="text-gray-700 mb-2">${comic.price}</p>
-              <p className="text-gray-700 mb-4">{comic.description}</p>
-
+            <div className="details w-full md:w-1/2 md:ml-4 flex flex-col justify-between">
+              {" "}
+              {/* Cambia a flex y ajusta alineación */}
+              <div>
+                <h2 className="text-3xl">{comic.title}</h2>
+                <p className="text-gray-700 mb-2">Autor: {comic.author}</p>
+                <p className="text-gray-700 mb-2"> {comic.publisher}</p>
+                <p className="text-gray-700 mb-2">${comic.price}</p>
+                <p className="text-gray-700 mb-4">{comic.description}</p>
+              </div>
               {showAddToCart && (
                 <Link to="/carrito">
-                  <button
-                    className="button"
-                    onClick={handleAddToCart}
-                  >
+                  <button className="button" onClick={handleAddToCart}>
                     ADD TO CART
                   </button>
                 </Link>
@@ -95,7 +94,3 @@ const ComicDetail = ({ _id, backupImage }) => {
 };
 
 export default ComicDetail;
-
-
-
-

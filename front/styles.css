@@ -42,15 +42,63 @@ body{
   
   .navbar-links {
     display: flex;
-    gap: 20px; 
+    gap: 20px;
     list-style: none;
     align-items: center;
   }
+  .navbar-links li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  .login-button {
+    display: block;
+  }
+ 
 
   .login-button img{
     width: 25px;
     border-radius: 100%; 
+    
   }
+  .nav-header a {
+    display:block;
+    padding: 8px;
+  }
+  .nav-header-trigger{
+    display: none;
+  }
+
+  @media(max-width:768px){
+    .navbar-links {
+      display: block;
+      gap: 20px; 
+      list-style: none;
+      position: absolute;
+      align-items: center;
+      text-align: center;
+      background-color: var(--secondary-color);
+      width: 100%;
+      top: 80px;
+      left: 0;
+    }
+    .nav-header_menuItems{
+      display: none;
+    }
+    .nav-header_menuItems.is-open{
+      display: block;
+    }
+    .nav-header-trigger{
+      display: block;
+    }
+    .nav-header a {
+      display:block;
+      width: 100%;
+    }
+  }
+  
   .card{
     background-color: rgb(255, 255, 255);
     
