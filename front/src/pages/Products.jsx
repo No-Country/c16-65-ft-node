@@ -65,22 +65,15 @@ const Products = () => {
   }, [limit, page, selectedCategory, sortByPrice, searchTitle]);
 
   return (
-    <div style={{ display: "flex", borderRadius:"5px",}}>
+    <div  id="container_Products" style={{ display: "flex", borderRadius:"5px",}}>
       <div
         id="filtrado"
-        style={{
-          width: "250px",
-          height: "400px",
-          padding: "20px",
-          borderRadius:"5px",
-          borderRadius: "10px",
-          marginRight: "20px",
-        }}
+      
       >
 
 <div className="search" >
           {/* <label htmlFor="searchInput">Search:</label> */}
-          <div style={{ position: "relative",borderRadius:"5px" ,boxShadow:"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"  }}>
+          <div className="barsear">
 
           <FaSearch
               style={{
@@ -93,6 +86,7 @@ const Products = () => {
               }}
             />
             <input
+            className="inpubarsear"
               type="text"
               id="searchInput"
               value={searchTitle}
@@ -133,6 +127,7 @@ const Products = () => {
       </div>
       <div>
         {noResults && <h1
+      className="noResults"
         
         style={{
           textAlign: "center",
@@ -142,13 +137,14 @@ const Products = () => {
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}>No results found.</h1>}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
           {data.map((item) => (
             <div
               key={`${item._id}-${item.title}`}
-              className="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105"
+              className="tarjeta rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 w-100%"
             >
               <Card
+              
                 _id={item._id}
                 title={item.title}
                 price={item.price}
@@ -161,7 +157,7 @@ const Products = () => {
         </div>
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           {data.length < totalDocs && (
-            <button className="button"
+            <button className="buttonP"
               onClick={loadMore}
             >
               Cargar más comics
