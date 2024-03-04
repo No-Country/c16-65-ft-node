@@ -9,6 +9,7 @@ import Products from "../pages/Products";
 import ComicDetail from "../components/ComicDetail";
 import EditComic from "../pages/EditComic";
 import Profile from "../pages/Profile";
+import Admin from "../pages/Admin";
 // import CheckoutForm from "../pages/CheckoutForm";
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         }
       /> */}
       <Route path="*" element={<Notfound />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 };
