@@ -1,5 +1,13 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import {
+  GiBatMask,
+  GiSpiderMask,
+  GiAmericanShield,
+  GiPenguin,
+  GiBoomerang,
+} from "react-icons/gi";
+
 import "./footer.css";
 
 const programmers = [
@@ -8,30 +16,35 @@ const programmers = [
     role: "Frontend",
     linkedin: "https://www.linkedin.com/in/florenciaadid/",
     github: "https://github.com/florenciaadid",
+    img: <GiBatMask />,
   },
   {
     name: "Fernando Torrón",
     role: "FullStack",
     linkedin: "https://www.linkedin.com/in/fertorron/",
     github: "https://github.com/FerTorron",
+    img: <GiSpiderMask />,
   },
   {
     name: "Javier Luis Damiani Arellano",
     role: "FullStack",
     linkedin: "https://www.linkedin.com/in/javierluisdamianiarellano/",
     github: "https://github.com/javierdamiani",
+    img: <GiAmericanShield />,
   },
   {
     name: "Daniel Perea Mosquera",
     role: "Frontend",
     linkedin: "https://www.linkedin.com/in/daniel-perea-mosquera-3b3017127/",
     github: "https://github.com/ygdani89",
+    img: <GiBoomerang />,
   },
   {
     name: "David E. Etchepare",
     role: "Project Manager",
     linkedin: "https://www.linkedin.com/in/etcheparede/",
     github: "https://github.com/etchepared",
+    img: <GiPenguin />,
   },
 ];
 
@@ -45,7 +58,10 @@ const Footer = () => {
               <div className="programmer-info">
                 <div className="programmer-name">{programmer.name}</div>
                 <div className="programmer-details">
-                  <div className="programmer-role">{programmer.role}</div>
+                  <div className="programmer-role">
+                    {programmer.img} &nbsp;&nbsp;
+                    {programmer.role}
+                  </div>
                   <div className="social-icons">
                     <a
                       href={programmer.linkedin}
