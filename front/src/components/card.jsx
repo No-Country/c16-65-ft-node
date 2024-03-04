@@ -1,8 +1,8 @@
-import { useContext, useState, useEffect } from 'react';
-import { FaCartPlus } from 'react-icons/fa';
-import { RiSubtractFill } from 'react-icons/ri';
-import { Context } from '../context/Context';
-import { Link } from 'react-router-dom';
+import { useContext, useState, useEffect } from "react";
+import { FaCartPlus } from "react-icons/fa";
+import { RiSubtractFill } from "react-icons/ri";
+import { Context } from "../context/Context";
+import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Card({ _id, title, price, thumbnail, to, backupImage }) {
@@ -51,21 +51,29 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
         </div>
       </Link>
 
-      <div className="card-description">
-        <h3>{title}</h3>
-        <p >${price}</p>
-        <div >
-          <button
-            onClick={handleRemoveFromCart}
-          >
-            <RiSubtractFill />
-          </button>
+      <div className="p-4 text-center">
+        <h2 className="text-sm">{title}</h2>
+        <p className="font-bold">${price}</p>
+        <div className="flex justify-center mt-2 space-x-2">
           {showAddToCart && (
-            <button className="text-gray-700 p-2" onClick={handleAddToCart}>
-              <Link >
+            <button
+              className="text-black border border-solid border-black p-2 rounded"
+              onClick={handleRemoveFromCart}
+            >
+              <RiSubtractFill />
+            </button>
+          )}
+          {showAddToCart ? (
+            <button
+              className="text-black p-2 rounded"
+              onClick={handleAddToCart}
+            >
+              <Link>
                 <FaCartPlus />
               </Link>
             </button>
+          ) : (
+            <div>Login to add to cart</div>
           )}
         </div>
       </div>
