@@ -5,6 +5,7 @@ import { Context } from "../context/Context";
 import { Link } from "react-router-dom";
 import LoginButton from "../util/LoginButton";
 import logo from "../assets/logo.png"
+import "../components/navbar.css"
 
 const Navbar = () => {
   const { getTotalQuantity } = useContext(Context);
@@ -29,7 +30,7 @@ const Navbar = () => {
         <ul className={`nav-header_menuItems ${isOpen ? "is-open": ""}`}>
             <div className="navbar-links">
             <li >
-              <Link to="/carrito"  onClick={closeMenu}>
+              <Link to="/carrito" onClick={closeMenu}>
                 <FaCartPlus />
                 <samp>{quantity}</samp>{""}
             </Link>
