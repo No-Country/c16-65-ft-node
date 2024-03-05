@@ -26,7 +26,7 @@ const programmers = [
     img: <GiSpiderMask />,
   },
   {
-    name: "Javier Luis Damiani Arellano",
+    name: "Javier Damiani Arellano",
     role: "FullStack",
     linkedin: "https://www.linkedin.com/in/javierluisdamianiarellano/",
     github: "https://github.com/javierdamiani",
@@ -51,7 +51,6 @@ const programmers = [
 const Footer = () => {
   return (
     <footer className="footer">
-      <div>
         <ul className="programmers-list">
           {programmers.map((programmer, index) => (
             <li key={index} className="programmer-item">
@@ -83,7 +82,6 @@ const Footer = () => {
             </li>
           ))}
         </ul>
-      </div>
     </footer>
   );
 };
