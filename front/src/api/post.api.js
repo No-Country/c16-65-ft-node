@@ -122,3 +122,23 @@ export const deleteProductCart = async (cid, pid) => {
     });
   }
 };
+
+export const createPurchase = async (email) => {
+  const url = `https://no-country-cwv9.onrender.com/api/purchases/create`;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    });
+    if (response.ok) {
+      console.log("Compra creada exitosamente");
+    }
+  } catch (error) {
+    console.error("Error al enviar la solicitud POST:", error);
+  }
+};
