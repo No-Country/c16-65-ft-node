@@ -1,0 +1,80 @@
+.navbar-container {
+    background-color: var(--secondary-color);
+    color:  var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .navbar-logo {
+    width: 200px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+  }
+  .navbar-links li a {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .login-button {
+    display: block;
+  }
+ 
+
+  .login-button img{
+    width: 25px;
+    border-radius: 100%; 
+    
+  }
+  .nav-header a {
+    display:block;
+    padding: 8px;
+  }
+  .nav-header-trigger{
+    display: none;
+  }
+
+  @media(max-width:768px){
+    .navbar-links {
+      display: block;
+      gap: 20px; 
+      list-style: none;
+      position: absolute;
+      align-items: flex-start;
+      background-color: var(--secondary-color);
+      width: 100%;
+      top: 80px;
+      left: 0;
+      color: var(--secondary-color);
+      font-weight: 500;
+      background-color:#E5E5C8;
+      padding: 30px;
+
+    }
+    .navbar-links li{
+        text-align: right;
+    }
+    .nav-header_menuItems{
+      display: none;
+    }
+    .nav-header_menuItems.is-open{
+      display: block;
+    }
+    .nav-header-trigger{
+      display: block;
+    }
+    .nav-header a {
+      text-align: right;
+    }
+  }
