@@ -1,0 +1,59 @@
+.footer {
+  background-color: #3f3c2d;
+  color: #e5e5c8;
+  padding: 15px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.programmers-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.programmer-item {
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.programmer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.programmer-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.programmer-details {
+  display: flex;
+  align-items: center;
+}
+
+.programmer-role {
+  display: flex;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.linkedin-icon,
+.github-icon {
+  color: #ffffff;
+  margin-right: 5px;
+}

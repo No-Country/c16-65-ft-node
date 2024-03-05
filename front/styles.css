@@ -1,0 +1,116 @@
+@import "variables.css";
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+h2 {
+  color: var(--primary-color);
+}
+h3 {
+  color: var(--primary-color);
+}
+.button {
+  background-color: var(--primary-color);
+  color: #fff;
+  margin: 10px 0;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: red 0.3s ease-in-out;
+}
+
+.navbar-container {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  width: 200px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+}
+.navbar-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  display: block;
+}
+
+.login-button img {
+  width: 25px;
+  border-radius: 100%;
+}
+.nav-header a {
+  display: block;
+  padding: 8px;
+}
+.nav-header-trigger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: block;
+    gap: 20px;
+    list-style: none;
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    background-color: var(--secondary-color);
+    width: 100%;
+    top: 80px;
+    left: 0;
+  }
+  .nav-header_menuItems {
+    display: none;
+  }
+  .nav-header_menuItems.is-open {
+    display: block;
+  }
+  .nav-header-trigger {
+    display: block;
+  }
+  .nav-header a {
+    display: block;
+    width: 100%;
+  }
+}
+
+.card {
+  background-color: rgb(255, 255, 255);
+}
+
+.card-image-container {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+.card-image {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-description {
+  padding: 10px;
+}
