@@ -1,0 +1,216 @@
+paths:
+  /api/comics:
+    get:
+      summary: Obtiene los Comics
+      tags:
+        - Comics
+      parameters:
+        - name: page
+          in: query
+          description: Número de página
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Límite de resultados por página
+          schema:
+            type: integer
+        - name: title
+          in: query
+          description: Título del cómic
+          schema:
+            type: string
+        - name: category
+          in: query
+          description: Categoría del cómic
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Ordenar por Precio (asc o desc)
+          schema:
+            type: string
+        - name: isAvailable
+          in: query
+          description: Indica si el cómic está disponible
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Devuelve los Comics
+
+  /api/comics/all:
+    get:
+      summary: Obtiene los Comics sin Paginar
+      tags:
+        - Comics
+      responses:
+        "200":
+          description: Devuelve los Comics sin Paginar
+
+  /api/comics/{id}:
+    get:
+      summary: Obtiene un Comic por id
+      tags:
+        - Comics
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id del comic
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Obtiene un Comic por id y lo devuelve
+        "400":
+          description: Devuelve un Error
+
+  /api/comics/create:
+    post:
+      summary: Crea un Comic
+      tags:
+        - Comics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Título del Comic
+                author:
+                  type: string
+                  description: Autor del Comic
+                description:
+                  type: string
+                  description: Descripción del Comic
+                publisher:
+                  type: string
+                  description: Editorial del Comic
+                category:
+                  type: string
+                  description: Categoria del Comic
+                price:
+                  type: number
+                  description: Precio del Comic
+                thumbnail:
+                  type: string
+                  description: Imagen del Comic
+                pdf:
+                  type: string
+                  description: PDF del Comic
+              required:
+                - title
+                - author
+                - description
+                - publisher
+                - category
+                - price
+                - thumbnail
+                - pdf
+            example:
+              title: Batman
+              author: DC
+              description: El Caballero de la noche
+              publisher: DC
+              category: Superheroes
+              price: 2500
+              thumbnail: prueba.jpg
+              pdf: prueba.pdf
+      responses:
+        "200":
+          description: Crea un Comic y lo devuelve
+        "400":
+          description: Devuelve un Error
+
+  /api/comics/edit/{id}:
+    put:
+      summary: Edita un Comic
+      tags:
+        - Comics
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id del comic
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Título del Comic
+                author:
+                  type: string
+                  description: Autor del Comic
+                description:
+                  type: string
+                  description: Descripción del Comic
+                publisher:
+                  type: string
+                  description: Editorial del Comic
+                category:
+                  type: string
+                  description: Categoria del Comic
+                price:
+                  type: number
+                  description: Precio del Comic
+                thumbnail:
+                  type: string
+                  description: Imagen del Comic
+                pdf:
+                  type: string
+                  description: PDF del Comic
+                isAvailable:
+                  type: boolean
+                  description: Disponibilidad del Comic
+              required:
+                - title
+                - author
+                - description
+                - publisher
+                - category
+                - price
+                - thumbnail
+                - pdf
+            example:
+              title: Batman vs Superman - Edit Test
+              author: DC - Edit Test
+              description: El Caballero de la noche - Edit Test
+              publisher: DC - Edit Test
+              category: Superheroes
+              price: 2500
+              thumbnail: prueba.jpg
+              pdf: prueba.pdf
+              isAvailable: true
+      responses:
+        "200":
+          description: Edita un Comic y lo devuelve
+        "400":
+          description: Devuelve un Error
+
+  /api/comics/delete/{id}:
+    delete:
+      summary: Borra un Comic
+      tags:
+        - Comics
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id del comic
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Edita un Comic y lo devuelve
+        "400":
+          description: Devuelve un Error

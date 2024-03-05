@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 node_modules
-<<<<<<<< HEAD:front/.gitignore
-========
 package-lock.json
 
->>>>>>>> 536f8c288a1c6599ab730b44a7afdbf93c9be753:back/.gitignore
 # Logs
 logs
 *.log
@@ -112,6 +108,3 @@ dist
 
 # package-lock.json
 package-lock.json
-=======
-node_modules
->>>>>>> 536f8c288a1c6599ab730b44a7afdbf93c9be753
