@@ -233,6 +233,21 @@ width: 100%;
 
 
 
+/* Carrito */
+
+.container_c {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-body:hover{
+  background-color: #305634;
+}
+
+
 
 
 
