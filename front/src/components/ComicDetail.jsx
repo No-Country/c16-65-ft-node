@@ -49,7 +49,7 @@ const ComicDetail = ({ _id, backupImage }) => {
   }, [comicId]);
 
   return (
-    <div >
+    <div className="container_Cd" >
       {loading && <p>Loading...</p>}
       {!loading && (
         <>
