@@ -6,12 +6,18 @@ body {
   background-color:#3f3c2d;
 }
 
+.main-content{
+  min-width: 300px;
+
+}
+
 #root {
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 .card {
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,6 +182,50 @@ body {
 
 
 
+/* Carrito */
+
+.container_c {
+
+  margin-top: 20px;
+  margin-top: 20px;
+  grid-row: auto;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+ 
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.card-body:hover{
+  background-color: #305634;
+}
+
+.tarjetas_c{
+ display: flex;
+ flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.total_c{
+  display: flex;
+  flex-direction: initial;
+  color: #e5e5c8;
+}
+
+.tittle_c{
+  text-align: center;
+}
+
+.card-body{
+  width: 200px;
+}
+
+
+
 
 
 
@@ -183,7 +233,7 @@ body {
 @media (max-width: 905px) {
   .card {
     padding: 5px;
-    font-size: 10px;
+   
   }
 
   #filtrado {
@@ -191,7 +241,9 @@ body {
     display: flex;
     flex-wrap: wrap;
   }
-
+  .container_c {
+    flex-direction: row;
+  }
  
 
   .tarjeta {
@@ -235,6 +287,9 @@ body {
   }
 }
 
+
+
+
 @media (max-width: 615px) {
   #filtrado {
     display: flex;
@@ -268,6 +323,10 @@ body {
     font-size: 20px;
     
   } 
+
+  .card{
+    width: auto;
+  }
 
   .img_cd {
     height: auto;
