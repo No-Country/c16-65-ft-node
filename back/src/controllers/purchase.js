@@ -1,6 +1,7 @@
 import { purchaseModel } from "../models/Purchase.js";
 import { cartModel } from "../models/Cart.js"
 import { userModel } from "../models/User.js"
+import { sendBuyStripe } from "../utils/email.js";
 
 const getPurchases = async (req, res) => {
     try {
@@ -87,6 +88,8 @@ const createPurchase = async (req, res) => {
             products: cart.products.map(product => ({ _id: product._id }))
         });
 
+        const products = cart.products.map(product => product._id);
+        await sendBuyStripe(user.email, products);
         await purchase.save();
         cart.products = [];
         await cart.save();
