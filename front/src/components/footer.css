@@ -1,10 +1,10 @@
 .footer {
   background-color: #3f3c2d;
   color: #e5e5c8;
-  padding: 15px;
+  padding: 10px;
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
 }
 
 .programmers-list {
@@ -12,13 +12,13 @@
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .programmer-item {
-  margin-bottom: 10px;
-  margin-right: 20px;
+  margin:10px;
   width: 100%;
   max-width: 300px;
   display: flex;
@@ -27,6 +27,7 @@
 }
 
 .programmer-info {
+  text-align: center;
   display: flex;
   flex-direction: column;
 }
@@ -38,13 +39,14 @@
 
 .programmer-details {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .programmer-role {
   display: flex;
   color: #ffffff;
   margin-right: 10px;
+  align-items: center;
 }
 
 .social-icons {

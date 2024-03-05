@@ -51,7 +51,6 @@ const programmers = [
 const Footer = () => {
   return (
     <footer className="footer">
-      <div>
         <ul className="programmers-list">
           {programmers.map((programmer, index) => (
             <li key={index} className="programmer-item">
@@ -83,7 +82,6 @@ const Footer = () => {
             </li>
           ))}
         </ul>
-      </div>
     </footer>
   );
 };
