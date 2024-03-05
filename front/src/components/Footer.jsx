@@ -26,7 +26,7 @@ const programmers = [
     img: <GiSpiderMask />,
   },
   {
-    name: "Javier Luis Damiani Arellano",
+    name: "Javier Damiani Arellano",
     role: "FullStack",
     linkedin: "https://www.linkedin.com/in/javierluisdamianiarellano/",
     github: "https://github.com/javierdamiani",
