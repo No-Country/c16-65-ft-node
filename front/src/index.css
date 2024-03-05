@@ -80,63 +80,6 @@ body {
 
 /* MEDIAQUERY */
 
-#filtrado {
-  width: 350px;
-  height: 150px;
-  margin-top: 20px;
-
-  display: inline-block;
-  padding: 20px;
-  border-radius: 5px;
-
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-#filtrado .search {
-  position: relative;
-  border-radius: 5px;
-  width: 100%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-#filtrado .category-filter,
-#filtrado .sort-by {
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  margin-top: 10px; /* Ajusta el margen superior según tus necesidades */
-}
-
-#filtrado select {
-  width: 100%; /* Ajusta el ancho según tus necesidades */
-}
-
-/* Agrega estilos adicionales según sea necesario */
-
-.barsear {
-
-  position: relative;
-
-  background-color: floralwhite;
-  border-radius: 5px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-.inpubarsear{
-width: 100%;
- 
-  border-radius: 5px;
-}
-
-#sortBy,
-#categoryDropdown {
-  cursor: pointer;
-  border-radius: 5px;
-}
 
 .grid {
   display: grid;
@@ -264,18 +207,7 @@ width: 100%;
     flex-wrap: wrap;
   }
 
-  .search,
-  .sort-by,
-  .category-filter {
-    justify-items: center;
-    align-items: center;
-    height: 24px;
-    position: relative;
-    border-radius: 5px;
-    width: 100%;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  }
+ 
 
   .tarjeta {
     width: auto;
