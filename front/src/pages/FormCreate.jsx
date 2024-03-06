@@ -20,8 +20,8 @@ function FormCreate() {
           pdf: "",
         }}
         onSubmit={async (values, { resetForm }) => {
-           values.thumbnail = thumbnailUrl;
-          //? console.log("Objeto que se está enviando:", values); // Agregado para ver el objeto en la consola
+          values.thumbnail = thumbnailUrl;
+          values.pdf = "xxxxx.pdf";
           try {
             await createNewComic(values);
             resetForm();
@@ -81,7 +81,6 @@ function FormCreate() {
               rows="3"
               maxLength="100"
               required
-              
             />
 
             <label
@@ -112,17 +111,17 @@ function FormCreate() {
               className="w-full px-4 py-2 mb-4 border rounded-md"
               id="category"
               name="category"
-              placeholder="Categoria"
+              placeholder="Category"
               onChange={handleChange}
               required
             >
               <option value="" disabled>
-                Selecciona una categoría
+                Select a category
               </option>
-              <option value="Superhéroes">Superhéroes</option>
-              <option value="Misterio">Misterio</option>
-              <option value="Fantasía">Fantasía</option>
-              <option value="Acción">Acción</option>
+              <option value="Superheroes">Superheroes</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Action">Action</option>
             </Field>
 
             <label htmlFor="price" className="block mb-2 text-sm text-gray-600">
@@ -148,26 +147,13 @@ function FormCreate() {
             </label>
             <Couldinary
               onImageUpload={(imageUrl) => setThumbnailUrl(imageUrl)}
-              
-            />
-
-            <label htmlFor="pdf" className="block mb-2 text-sm text-gray-600">
-              Pdf:
-            </label>
-            <Field
-              as="input"
-              className="w-full px-4 py-2 mb-4 border rounded-md"
-              name="pdf"
-              placeholder="URL pdf"
-              onChange={handleChange}
-              required
             />
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
             >
-              Guardar
+              Save
             </button>
           </Form>
         )}
