@@ -56,34 +56,32 @@ const ComicDetail = ({ _id, backupImage }) => {
           <Link to="/products">
             <button className="button_cd1 font-bold">BACK</button>
           </Link>
-          <div className="mian_contaire_cd"> 
+          <div className="mian_contaire_cd">
 
 
 
-          <div className="card-detail-container flex flex-col mt-8 p-4  rounded shadow-lg md:flex-row">
-            <div className="thumbnail mb-4 md:w-1/2 md:mb-0 flex justify-center items-center">
-              <img
-                src={comic.thumbnail || "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"}
-                alt=""
-                className="img_cd  mb-4 r"
-                onError={handleImageError}
-              />
-            </div>
-            <div className="details_edc w-full md:w-1/2 md:ml-4 flex flex-col justify-between">
-              <div>
-                <h2 className="text-3xl font-bold title_cd mb-2">{comic.title}</h2>
-                <p className="text-#3f3c2d font-bold autor_cd mb-2">Autor: {comic.author}</p>
-                <p className="text-#3f3c2d editorial_cd font-bold mb-2">Editorial: {comic.publisher}</p>
-                <p className="text-#3f3c2d price_cd font-bold mb-2">${comic.price}</p>
-                <p className="text-#3f3c2d description_cd mb-4">{comic.description}</p>
+            <div className="card-detail-container flex flex-col mt-8 p-4  rounded shadow-lg md:flex-row">
+              <div className="thumbnail mb-4 md:w-1/2 md:mb-0 flex justify-center items-center">
+                <img
+                  src={comic.thumbnail || "https://upload.wikimedia.org/wikipedia/en/0/07/Invincible_Issue_75.jpeg"}
+                  alt=""
+                  className="img_cd  mb-4 r"
+                  onError={handleImageError}
+                />
               </div>
-              {showAddToCart && (
-                <Link to="/carrito">
-                  <button className="button_cd">ADD TO CART</button>
-                </Link>
-              )}
+              <div className="details_edc w-full md:w-1/2 md:ml-4 flex flex-col justify-between">
+                <div>
+                  <h2 className="text-3xl font-bold title_cd mb-2">{comic.title}</h2>
+                  <p className="text-#3f3c2d font-bold autor_cd mb-2">Autor: {comic.author}</p>
+                  <p className="text-#3f3c2d editorial_cd font-bold mb-2">Editorial: {comic.publisher}</p>
+                  <p className="text-#3f3c2d price_cd font-bold mb-2">${comic.price}</p>
+                  <p className="text-#3f3c2d description_cd mb-4">{comic.description}</p>
+                </div>
+                {showAddToCart && (
+                  <button className="button_cd" onClick={handleAddToCart}>ADD TO CART</button>
+                )}
+              </div>
             </div>
-          </div>
           </div>
         </>
       )}
