@@ -19,6 +19,7 @@ const LoginButton = () => {
       return;
     }
 
+    console.log(userLocal, "userLocal");
     const userData = user || userLocal;
 
     const url = "https://no-country-cwv9.onrender.com/api/users/create";
