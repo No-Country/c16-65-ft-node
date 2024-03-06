@@ -1,0 +1,6 @@
+.profile-container{
+    margin-top:150px;
+    background-color: var(--background-secundario);
+    color: var(--secondary-color);
+    font-weight: 500;
+}
