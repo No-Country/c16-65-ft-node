@@ -63,18 +63,14 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
             <RiSubtractFill />
           </button>
         )}
-        {showAddToCart ? (
-          <button
-            className="text-#3f3c2d p-2 rounded"
-            onClick={handleAddToCart}
-          >
-            <Link>
-              <FaCartPlus />
-            </Link>
-          </button>
-        ) : (
-          <div className="login-text truncate">Login to add to cart</div>
-        )}
+         {showAddToCart && location.pathname !== "/carrito" && (
+            <button className="text-black p-2 rounded" onClick={handleAddToCart}>
+              <Link>
+                <FaCartPlus />
+              </Link>
+            </button>
+          )}
+          {!showAddToCart && <div className="login-text">Login to add to cart</div>}
       </div>
     </div>
   </div>
