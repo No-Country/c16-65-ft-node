@@ -1,34 +1,33 @@
 .footer {
   background-color: #3f3c2d;
   color: #e5e5c8;
-  padding: 15px;
   width: 100%;
-  position: fixed;
-  bottom: 0;
 }
 
 .programmers-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 15px 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .programmer-item {
-  margin-bottom: 10px;
-  margin-right: 20px;
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 2px;
+
 }
 
 .programmer-info {
+  text-align: center;
   display: flex;
   flex-direction: column;
+ 
 }
 
 .programmer-name {
@@ -38,12 +37,14 @@
 
 .programmer-details {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .programmer-role {
+  display: flex;
   color: #ffffff;
   margin-right: 10px;
+  align-items: center;
 }
 
 .social-icons {
@@ -55,4 +56,26 @@
 .github-icon {
   color: #ffffff;
   margin-right: 5px;
+}
+
+@media (max-width: 400px) {
+
+  .programmer-item {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+  .programmer-item:last-child {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 300px) {
+  .programmers-list {
+    flex-wrap: wrap;
+  }
+  .programmer-item {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }

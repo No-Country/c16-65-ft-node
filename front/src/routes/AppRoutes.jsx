@@ -10,6 +10,7 @@ import ComicDetail from "../components/ComicDetail";
 import EditComic from "../pages/EditComic";
 import Profile from "../pages/Profile";
 import Admin from "../pages/Admin";
+import PaymentSuccess from "../pages/PaymentSuccess";
 // import CheckoutForm from "../pages/CheckoutForm";
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
@@ -29,6 +30,7 @@ const AppRoutes = () => {
       <Route path="/search" element={<Search />} />
       <Route path="/form" element={<FormCreate />} />
       <Route path="/edit" element={<EditComic />} />
+      <Route path="/success" element={<PaymentSuccess />} />
       {/* <Route
         path="/checkout"
         element={

@@ -52,29 +52,25 @@ function Card({ _id, title, price, thumbnail, to, backupImage }) {
     </Link>
   
     <div className="cont1 p-4 text-center flex flex-col justify-between h-full">
-      <h2 className="text-sm my-auto px-4 truncate">{title}</h2>
+      <h2 className="text-sm my-auto ">{title}</h2>
       <p className=" font-bold">${price}</p>
       <div className="flex justify-center mt-2 space-x-2">
         {showAddToCart && (
           <button
-            className="text-black border border-solid border-black p-2 rounded"
+            className="text-#3f3c2d  p-2 rounded"
             onClick={handleRemoveFromCart}
           >
             <RiSubtractFill />
           </button>
         )}
-        {showAddToCart ? (
-          <button
-            className="text-black p-2 rounded"
-            onClick={handleAddToCart}
-          >
-            <Link>
-              <FaCartPlus />
-            </Link>
-          </button>
-        ) : (
-          <div className="login-text">Login to add to cart</div>
-        )}
+         {showAddToCart && location.pathname !== "/carrito" && (
+            <button className="text-black p-2 rounded" onClick={handleAddToCart}>
+              <Link>
+                <FaCartPlus />
+              </Link>
+            </button>
+          )}
+          {!showAddToCart && <div className="login-text">Login to add to cart</div>}
       </div>
     </div>
   </div>
