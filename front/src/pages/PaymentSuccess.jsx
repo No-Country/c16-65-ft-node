@@ -1,7 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPurchase } from "../api/post.api";
 
 const PaymentSuccess = () => {
   const [showMessage, setShowMessage] = useState(true);
+  const [userLocal, setUserLocal] = useState(null)
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUserLocal(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userLocal) {
+      createPurchase(userLocal.email);
+    }
+  }, [userLocal]);
 
   const handleClose = () => {
     setShowMessage(false);
