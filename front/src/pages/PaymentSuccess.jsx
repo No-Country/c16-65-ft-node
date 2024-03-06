@@ -5,6 +5,7 @@ const PaymentSuccess = () => {
 
   const handleClose = () => {
     setShowMessage(false);
+    window.location.href = "/products"; // Redirigir a /products al hacer clic en la X
   };
 
   return (
