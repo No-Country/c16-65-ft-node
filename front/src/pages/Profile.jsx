@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import "../pages/profile.css"
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
@@ -11,7 +12,7 @@ const Profile = () => {
     }, []);
 
     return (
-        <div className="max-w-md mx-auto mt-10 bg-gray-300 p-6 rounded-lg shadow-md">
+        <div className="profile-container max-w-md mx-auto mt-10 bg-gray-300 p-6 rounded-lg shadow-md">
             <h1 className="text-3xl font-semibold mb-4 text-center">Perfil</h1>
             {userData && (
                 <div className='flex flex-col items-center'>
