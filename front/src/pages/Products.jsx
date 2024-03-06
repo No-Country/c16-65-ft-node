@@ -126,7 +126,7 @@ const Products = () => {
           {data.map((item) => (
             <div
               key={`${item._id}-${item.title}`}
-              className="tarjeta rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 w-100%"
+            
             >
               <Card
 
