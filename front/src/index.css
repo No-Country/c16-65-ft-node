@@ -89,6 +89,21 @@ body {
   width: 110px;
 }
 
+/*User profile */
+
+.profile-container{
+  margin-top:150px;
+  background-color: var(--background-secundario);
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.history{
+  background-color: var(--background-secundario);
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
 /* MEDIAQUERY */
 
 .grid {
@@ -121,6 +136,8 @@ body {
 .buttonP:hover {
   background-color: #b35c00;
 }
+
+
 
 /* Comic detail */
 
