@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createPurchase } from "../api/post.api";
+import "../pages/paymentSuccess.css"
 
 const PaymentSuccess = () => {
   const [showMessage, setShowMessage] = useState(true);
@@ -26,7 +27,7 @@ const PaymentSuccess = () => {
   return (
     <>
       {showMessage && (
-        <div className="bg-green-50 border border-green-200 text-green-900 px-6 py-4 rounded-lg flex items-center">
+        <div className="payment-success-container bg-green-50 border border-green-200 text-green-900 px-6 py-4 rounded-lg flex items-center">
           <div className="flex-shrink-0">
             <svg className="h-10 w-10 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

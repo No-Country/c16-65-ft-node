@@ -63,6 +63,8 @@ const Products = () => {
     fetchData();
   }, [limit, page, selectedCategory, sortByPrice, searchTitle]);
 
+  const availableProducts = data.filter((item) => item.isAvailable);
+
   return (
     <div id="container_Products" style={{ display: "flex", borderRadius: "5px", }}>
       <div id="filtrado">
@@ -123,7 +125,7 @@ const Products = () => {
             transform: "translate(-50%, -50%)",
           }}>No results found.</h1>}
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
-          {data.map((item) => (
+          {availableProducts.map((item) => (
             <div
               key={`${item._id}-${item.title}`}
             
