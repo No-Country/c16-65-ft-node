@@ -31,7 +31,7 @@ const Profile = () => {
   return (
     <div className="max-w-md mx-auto mt-10">
       <div className="profile-container bg-gray-300 p-6 rounded-lg shadow-md">
-        <h1 className="text-3xl font-semibold mb-4 text-center">Perfil</h1>
+        <h1 className="text-3xl font-semibold mb-4 text-center">Profile</h1>
         {userData && (
           <div className="flex flex-col items-center">
             <img
@@ -47,7 +47,7 @@ const Profile = () => {
       </div>
       <div className="mt-6 " >
         <h2 className="text-2xl font-semibold mb-4 text-center">
-          Historial de Compras
+          ORDER HISTORY
         </h2>
         <div className="history grid gap-4 flex bg-gray-300 p-6 rounded-lg shadow-md">
           {userPurchases.map((purchase) => (
@@ -56,10 +56,10 @@ const Profile = () => {
               className=" history-detail rounded-md bg-white p-4 shadow-md "
             >
               <p>
-                Fecha de compra:{" "}
+                Date of purchase:{" "}
                 {new Date(purchase.purchase_datetime).toLocaleString()}
               </p>
-              <p>Productos:</p>
+              <p>Products:</p>
               <ul>
                 {purchase.products.map((product, index) => (
                   <li key={index}>{product._id.title}</li>
