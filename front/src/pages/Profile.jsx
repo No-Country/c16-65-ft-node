@@ -30,7 +30,7 @@ const Profile = () => {
 
   return (
     <div className="max-w-md mx-auto mt-10">
-      <div className="bg-gray-300 p-6 rounded-lg shadow-md">
+      <div className="profile-container bg-gray-300 p-6 rounded-lg shadow-md">
         <h1 className="text-3xl font-semibold mb-4 text-center">Perfil</h1>
         {userData && (
           <div className="flex flex-col items-center">
@@ -45,15 +45,15 @@ const Profile = () => {
           </div>
         )}
       </div>
-      <div className="mt-6">
+      <div className="mt-6 " >
         <h2 className="text-2xl font-semibold mb-4 text-center">
           Historial de Compras
         </h2>
-        <div className="grid gap-4 flex">
+        <div className="history grid gap-4 flex bg-gray-300 p-6 rounded-lg shadow-md">
           {userPurchases.map((purchase) => (
             <div
               key={purchase._id}
-              className="bg-white p-4 rounded-lg shadow-md"
+              className=" history-detail rounded-md bg-white p-4 shadow-md "
             >
               <p>
                 Fecha de compra:{" "}
