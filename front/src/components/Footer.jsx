@@ -50,28 +50,9 @@ const programmers = [
 ];
 
 const Footer = () => {
-  const [showFooter, setShowFooter] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      //? Calcular la posición de desplazamiento y la altura total del documento
-      const scrollY = window.scrollY || window.pageYOffset;
-      const totalHeight = document.body.scrollHeight - window.innerHeight;
-
-      //? Mostrar el footer solo cuando se llega al fondo de la página
-      setShowFooter(scrollY >= totalHeight);
-    };
-
-    //? Agregar el evento de desplazamiento
-    window.addEventListener("scroll", handleScroll);
-
-    //? Limpiar el evento al desmontar el componente
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
-    <footer className={`footer ${showFooter ? "visible" : "hidden"}`}>
+    <footer className={`footer`}>
       <ul className="programmers-list">
         {programmers.map((programmer, index) => (
           <li key={index} className="programmer-item">
