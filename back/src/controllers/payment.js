@@ -27,7 +27,7 @@ export const createSession = async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     success_url: "https://pagetwo.onrender.com/success",
-    cancel_url: "https://pagetwo.onrender.com/cancel",
+    cancel_url: "https://pagetwo.onrender.com/carrito",
   });
 
   return res.json(session);
