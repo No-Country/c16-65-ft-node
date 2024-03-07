@@ -64,9 +64,9 @@ const EditComic = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Edit Comic</h1>
-      <table className="w-full table-auto">
+    <div className="container_Edit mx-auto">
+      <h1 className="container_Edit_h1 text-2xl font-bold mb-4">Edit Comic</h1>
+      <table className="container_Edit_table  w-full table-auto">
         <thead>
           <tr>
             <th>Title</th>
@@ -110,7 +110,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="text"
-                    className="border border-gray-300 p-2"
+                    className="container_Edit_input border border-gray-300 p-2"
                     value={editedComics[comic._id]?.author || comic.author}
                     onChange={(e) => handleChange(comic._id, "author", e.target.value)}
                   />
@@ -151,14 +151,14 @@ const EditComic = () => {
                     onChange={(e) => handleChange(comic._id, "price", e.target.value)}
                   />
                 ) : (
-                  comic.price
+                 comic.price 
                 )}
               </td>
               <td>{comic.isAvailable ? "Yes" : "No"}</td>
-              <td className="flex items-center  m-auto">
+              <td className="container_td flex items-center  m-auto">
                 {editMode[comic._id] ? (
                   <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="container_Edit_button  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => handleSave(comic._id)}
                   >
                     Guardar
@@ -168,14 +168,14 @@ const EditComic = () => {
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => handleEdit(comic._id)}
                   >
-                    Editar
+                    Edit
                   </button>
                 )}
                 <button
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
                   onClick={() => handleDelete(comic._id)}
                 >
-                  Cambiar Disponibilidad
+                 Availability
                 </button>
               </td>
             </tr>
