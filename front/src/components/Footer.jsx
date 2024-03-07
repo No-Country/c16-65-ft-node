@@ -9,6 +9,7 @@ import {
 } from "react-icons/gi";
 
 import "./footer.css";
+import { useEffect, useState } from "react";
 
 const programmers = [
   {
@@ -49,39 +50,59 @@ const programmers = [
 ];
 
 const Footer = () => {
+  const [showFooter, setShowFooter] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      //? Calcular la posición de desplazamiento y la altura total del documento
+      const scrollY = window.scrollY || window.pageYOffset;
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+
+      //? Mostrar el footer solo cuando se llega al fondo de la página
+      setShowFooter(scrollY >= totalHeight);
+    };
+
+    //? Agregar el evento de desplazamiento
+    window.addEventListener("scroll", handleScroll);
+
+    //? Limpiar el evento al desmontar el componente
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <footer className="footer">
-        <ul className="programmers-list">
-          {programmers.map((programmer, index) => (
-            <li key={index} className="programmer-item">
-              <div className="programmer-info">
-                <div className="programmer-name">{programmer.name}</div>
-                <div className="programmer-details">
-                  <div className="programmer-role">
-                    {programmer.img} &nbsp;&nbsp;
-                    {programmer.role}
-                  </div>
-                  <div className="social-icons">
-                    <a
-                      href={programmer.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaLinkedin className="linkedin-icon" />
-                    </a>
-                    <a
-                      href={programmer.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaGithub className="github-icon" />
-                    </a>
-                  </div>
+    <footer className={`footer ${showFooter ? "visible" : "hidden"}`}>
+      <ul className="programmers-list">
+        {programmers.map((programmer, index) => (
+          <li key={index} className="programmer-item">
+            <div className="programmer-info">
+              <div className="programmer-name">{programmer.name}</div>
+              <div className="programmer-details">
+                <div className="programmer-role">
+                  {programmer.img} &nbsp;&nbsp;
+                  {programmer.role}
+                </div>
+                <div className="social-icons">
+                  <a
+                    href={programmer.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaLinkedin className="linkedin-icon" />
+                  </a>
+                  <a
+                    href={programmer.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGithub className="github-icon" />
+                  </a>
                 </div>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </li>
+        ))}
+      </ul>
     </footer>
   );
 };
