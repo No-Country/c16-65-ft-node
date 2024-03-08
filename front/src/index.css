@@ -265,7 +265,7 @@ body {
   height: 100px;
 }
 
-.container_Edit_h1 {
+.container_Edit_h1,.users_h1 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -400,6 +400,18 @@ padding: 40px;
 }
 
 
+/* useres */
+
+.users_table{
+  background-color: #3f3c2d;
+  /* color: #e5e5c8; */
+}
+.user_td{
+  color: #e5e5c8;
+}
+.users_tr{
+  background-color:#e5e5c8 ;
+}
 
 
 

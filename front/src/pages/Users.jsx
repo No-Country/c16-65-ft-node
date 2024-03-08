@@ -23,13 +23,13 @@ const Users = () => {
 
   console.log(users, "usuarios");
   return (
-    <div className="flex justify-center p-4">
+    <div className="container_useres  flex justify-center p-4">
       <div className="w-full md:w-2/3 lg:w-1/2">
-        <h1 className="text-3xl font-bold mb-4 text-gray-700">Users</h1>
+        <h1 className=" users_h1 text-3xl font-bold mb-4 text-gray-700">Users</h1>
         <div className="overflow-x-auto">
-          <table className="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+          <table className="users_table w-full bg-white border border-gray-300 rounded-lg shadow-md">
             <thead>
-              <tr className="bg-gray-200 text-gray-700">
+              <tr className="users_tr bg-gray-200 text-gray-700">
                 <th className="px-4 py-2 border">Name</th>
                 <th className="px-4 py-2 border">Email</th>
                 <th className="px-4 py-2 border">Role</th>
@@ -38,9 +38,9 @@ const Users = () => {
             <tbody>
               {users.map((user) => (
                 <tr key={user._id} className="text-gray-600">
-                  <td className="border px-4 py-2">{user.name}</td>
-                  <td className="border px-4 py-2">{user.email}</td>
-                  <td className="border px-4 py-2">{user.role}</td>
+                  <td className=" user_td border px-4 py-2">{user.name}</td>
+                  <td className="user_td border px-4 py-2">{user.email}</td>
+                  <td className="user_td border px-4 py-2">{user.role}</td>
                 </tr>
               ))}
             </tbody>
