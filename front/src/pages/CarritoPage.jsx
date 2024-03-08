@@ -54,7 +54,7 @@ const CarritoPage = () => {
         <div className="tarjetas_c">
           {cart.map((item) => (
             <div key={item._id._id} className="  p-4">
-              <div className="bg-white  w-100 text-black rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105">
+              <div className="grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
                 <Card
                   _id={item._id._id}
                   title={item._id.title}
