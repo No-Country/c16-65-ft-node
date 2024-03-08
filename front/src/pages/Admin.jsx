@@ -20,9 +20,9 @@ const Admin = () => {
 
   return (
     <div className="">
-      <div className="tabs flex">
+      <div className="tabs_admin flex">
         <button
-          className={`px-4 py-2 mr-2 bg-gray-200 text-gray-700 rounded-md focus:outline-none focus:bg-gray-300 ${
+          className={` admin_button ${
             activeTab === "create" ? "active" : ""
           }`}
           onClick={() => handleTabChange("create")}
@@ -30,7 +30,7 @@ const Admin = () => {
           Create
         </button>
         <button
-          className={`px-4 py-2 mr-2 bg-gray-200 text-gray-700 rounded-md focus:outline-none focus:bg-gray-300 ${
+          className={` admin_button ${
             activeTab === "edit" ? "active" : ""
           }`}
           onClick={() => handleTabChange("edit")}
@@ -38,7 +38,7 @@ const Admin = () => {
           Edit
         </button>
         <button
-          className={`px-4 py-2 bg-gray-200 text-gray-700 rounded-md focus:outline-none focus:bg-gray-300 ${
+          className={`admin_button  ${
             activeTab === "users" ? "active" : ""
           }`}
           onClick={() => handleTabChange("users")}

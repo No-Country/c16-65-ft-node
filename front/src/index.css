@@ -374,6 +374,36 @@ td {
   color: black;
 }
 
+/* /adim */
+.tabs_admin{
+
+padding: 40px;
+
+}
+
+.admin_button{
+
+  margin-top: 5px;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #d37100;
+  color: #fff;
+  margin-left: 10px;
+  font-weight: bold;
+
+}
+
+.admin_button:hover{
+  background-color: #ff8800;
+}
+
+
+
+
+
+
 @media (max-width: 767px) {
   .details_edc {
     align-items: center;
