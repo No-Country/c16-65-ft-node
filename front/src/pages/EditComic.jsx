@@ -86,7 +86,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="text"
-                    className="border border-gray-300 p-2"
+                    className="border text_edit border-gray-300  p-2"
                     value={editedComics[comic._id]?.title || comic.title}
                     onChange={(e) => handleChange(comic._id, "title", e.target.value)}
                   />
@@ -98,7 +98,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="text"
-                    className="border border-gray-300 p-2"
+                    className="border text_edit border-gray-300 p-2"
                     value={editedComics[comic._id]?.description || comic.description}
                     onChange={(e) => handleChange(comic._id, "description", e.target.value)}
                   />
@@ -110,7 +110,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="text"
-                    className="container_Edit_input border border-gray-300 p-2"
+                    className="container_Edit_input border text_edit border-gray-300 p-2"
                     value={editedComics[comic._id]?.author || comic.author}
                     onChange={(e) => handleChange(comic._id, "author", e.target.value)}
                   />
@@ -122,7 +122,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="text"
-                    className="border border-gray-300 p-2"
+                    className="border text_edit border-gray-300 p-2"
                     value={editedComics[comic._id]?.publisher || comic.publisher}
                     onChange={(e) => handleChange(comic._id, "publisher", e.target.value)}
                   />
@@ -134,7 +134,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="text"
-                    className="border border-gray-300 p-2"
+                    className="border text_edit border-gray-300 p-2"
                     value={editedComics[comic._id]?.category || comic.category}
                     onChange={(e) => handleChange(comic._id, "category", e.target.value)}
                   />
@@ -146,7 +146,7 @@ const EditComic = () => {
                 {editMode[comic._id] ? (
                   <input
                     type="number"
-                    className="border border-gray-300 p-2"
+                    className="border text_edit border-gray-300 p-2"
                     value={editedComics[comic._id]?.price || comic.price}
                     onChange={(e) => handleChange(comic._id, "price", e.target.value)}
                   />

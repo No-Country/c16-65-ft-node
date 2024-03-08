@@ -370,6 +370,10 @@ td {
   }
 }
 
+.text_edit{
+  color: black;
+}
+
 @media (max-width: 767px) {
   .details_edc {
     align-items: center;
