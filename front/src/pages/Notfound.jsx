@@ -1,9 +1,11 @@
-
+import "../pages/products.css";
 
 function Notfound() {
   return (
-    <div>Notfound</div>
-  )
+    <div id="container_Products">
+      <div className="noResults">Page not found</div>
+    </div>
+  );
 }
 
-export default Notfound
+export default Notfound;
